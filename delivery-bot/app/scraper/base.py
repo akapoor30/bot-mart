@@ -1,0 +1,1 @@
+# Base Scraper class (Interface)
