@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from app.scraper.blinkit import BlinkitScraper
 from app.scraper.zepto import ZeptoScraper
+from app.scraper.instamart import InstamartScraper
 import asyncio
 
 app = FastAPI(title="Quick Commerce Comparison Bot")
@@ -14,11 +15,13 @@ async def compare(item: str, pincode: str = "110001"):
     # Initialize scrapers
     blinkit = BlinkitScraper()
     zepto = ZeptoScraper()
+    instamart = InstamartScraper()
     
     # Run all scrapers in parallel
     tasks = [
         blinkit.search_product(item, pincode),
         zepto.search_product(item, pincode),
+        instamart.search_product(item, pincode),
     ]
     
     results = await asyncio.gather(*tasks)

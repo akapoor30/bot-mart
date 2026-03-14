@@ -30,7 +30,7 @@ delivery-bot/
 │   │   ├── base.py          # BaseScraper — interface all scrapers must implement
 │   │   ├── blinkit.py       # Opens Chrome, searches Blinkit, extracts product + price
 │   │   ├── zepto.py         # Opens Chrome, searches Zepto, extracts product + price
-│   │   └── instamart.py     # (Placeholder — coming next)
+│   │   └── instamart.py     # Opens Chrome with auth, handles bot checks, extracts product + price
 │   ├── utils/               # (Future) helper functions
 │   └── models/              # (Future) Pydantic data schemas
 ├── tmp/                     # Debug screenshots saved here (gitignored)
@@ -152,6 +152,20 @@ Every scraper must implement `search_product(product_name, pincode)` and return:
    - Name = first non-price, non-rating line after price
 6. **Skip ads** — same logic, name must contain search term
 7. **Return** first matching product
+
+### `instamart.py` — Swiggy Instamart Scraper
+
+1. **Launch Chrome** (visible, disabled automation flags)
+2. **Load Session** uses `sessions/swiggy_auth.json` to bypass Datadome bot protection
+3. **Go to** `swiggy.com/instamart`
+4. **Click search banner** to open the real input field
+5. **Type product name** + Enter
+6. **Handle Anti-Bot Error** — Wait for and click the "Try Again" error boundary overlay if it appears
+7. **Handle Onboarding** — Dismiss "Got it!" tooltips that block the DOM
+8. **Find product cards** — Locate universal "Add item to cart" buttons
+9. **Parse DOM Tree** — Use `locator.evaluate` Javascript to walk up from the button to the product container and extract text
+10. **Filter Names** — Skip "Previously Bought", "Ad", "Sponsored" 
+11. **Return** first matching non-ad product `{store, name, price, status}`
 
 ---
 
