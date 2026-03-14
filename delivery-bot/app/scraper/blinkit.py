@@ -1,18 +1,30 @@
 # app/scraper/blinkit.py
+import os
 from playwright.async_api import async_playwright
-from playwright_stealth import Stealth
 from .base import BaseScraper
 
 class BlinkitScraper(BaseScraper):
     async def search_product(self, product_name: str, pincode: str):
         async with async_playwright() as p:
-            # headless=False to watch the bot (change to True once stable)
-            browser = await p.chromium.launch(headless=False)
-            context = await browser.new_context(
-                user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+            # headless=False with Chrome channel bypasses Datadome/Cloudflare better than stealth
+            browser = await p.chromium.launch(
+                headless=False,
+                channel="chrome",
+                args=['--disable-blink-features=AutomationControlled']
             )
+            
+            session_path = os.path.join(os.path.dirname(__file__), "../../sessions/blinkit_auth.json")
+            if os.path.exists(session_path):
+                context = await browser.new_context(
+                    user_agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+                    storage_state=session_path
+                )
+            else:
+                context = await browser.new_context(
+                    user_agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+                )
+                
             page = await context.new_page()
-            await Stealth().apply_stealth_async(page)
 
             try:
                 # 1. Go to Blinkit homepage
