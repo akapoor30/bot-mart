@@ -1,10 +1,20 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from app.scraper.blinkit import BlinkitScraper
 from app.scraper.zepto import ZeptoScraper
 from app.scraper.instamart import InstamartScraper
 import asyncio
 
 app = FastAPI(title="Quick Commerce Comparison Bot")
+
+# Enable CORS for the local frontend UI
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allow all origins for local development
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/")
 async def root():
