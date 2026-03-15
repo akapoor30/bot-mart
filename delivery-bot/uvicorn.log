@@ -1,0 +1,11 @@
+INFO:     Will watch for changes in these directories: ['/Users/anshkapoor/bot-mart/delivery-bot']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [69938] using StatReload
+INFO:     Started server process [69984]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+Fallback: Found 50 ADD buttons
+Parsed Card: {'name': 'MAGGI 2-Minute Instant Noodles, Made With Quality Spices', 'price': 58, 'weight': '300 g', 'is_ad': False, 'debug_text': '14 MINS\nMAGGI 2-Minute Instant Noodles, Made With Quality Spices\nEnjoy your favourite Masala taste\n300 g\n58'}
+Parsed Card: {'name': 'MAGGI 2-Minute Instant Noodles, Made With Quality Spices', 'price': 15, 'weight': '75 g', 'is_ad': False, 'debug_text': '14 MINS\nMAGGI 2-Minute Instant Noodles, Made With Quality Spices\nEnjoy your favourite Masala taste\n75 g\n15'}
+Parsed Card: {'name': 'MAGGI 2-Minute Instant Noodles, Made With Quality Spices', 'price': 92, 'weight': '450 g', 'is_ad': False, 'debug_text': '14 MINS\nMAGGI 2-Minute Instant Noodles, Made With Quality Spices\n450 g\n4% OFF\n83\n87\n14 MINS\nMAGGI Double Masala Noodles\n95 g\n20\n14 MINS\nMaggi Spicy 2-Minute Spicy Garlic Noodles\n248 g\n16% OFF\n84\n100\n14 MINS\nMaggi Spicy Cheesy Instant Noodles,Yummy Cheese Meets MAGGI Noodles\n304 g\n16% OFF\n84\n100\n14 MINS\nMAGGI 2-Minute Instant Noodles, Made With Quality Spices\n900 g\n3% OFF\n173\n180\n14 MINS\nMAGGI 2-Minute Instant Noodles, Made With Quality Spices\n300 g\n58\n14 MINS\nMAGGI Nutri-licious Masala Veg Atta Noodles, Instant Noodles\n290 g\n8% OFF\n99\n108\n14 MINS\nMAGGI 2-Minute Special Masala Instant Noodles\n280 g\n100\n14 MINS\nMAGGI Masala Cuppa Noodles\n70 g\n55\n14 MINS\nMaggi Chilly Chow Cuppa Noodles\n70 g\n55\n14 MINS\nMAGGI Spicy Cheesy Instant Cuppa Noodles\n71.5 g\n65\n14 MINS\nMAGGI Spicy Garlic Instant Cuppa Noodles\n70.5 g\n65\n14 MINS\nMAGGI Spicy Manchurian Instant Cuppa Noodles\n70.5 g\n65\n14 MINS\nMAGGI Nutri-licious Masala Veg Atta Noodles, Instant Noodles\n435 g\n10% OFF\n151\n168\nSOLD OUT\nMaggi Spicy 2-Minute Spicy Manchurian Noodles\n244 g\n16% OFF\n77\n92\nSOLD OUT\nMaggi Spicy BBQ/Pepper Instant Noodles\n248 g\n16% OFF\n77\n92'}
+INFO:     127.0.0.1:61635 - "GET /compare?item=Maggi&pincode=560095 HTTP/1.1" 200 OK

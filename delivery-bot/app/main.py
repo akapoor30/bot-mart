@@ -26,13 +26,19 @@ async def compare(item: str, pincode: str = "110001"):
     
     results = await asyncio.gather(*tasks)
     
-    # Simple logic to find the cheapest
-    valid_results = [r for r in results if r["status"] == "success"]
+    # Filter out None results and handle errors
+    valid_results = [r for r in results if r is not None and r.get("status") == "success"]
     cheapest = min(valid_results, key=lambda x: x["price"]) if valid_results else None
+
+    # Replace any None results with a failure dict for the response if they exist
+    processed_results = [
+        r if r is not None else {"store": "Unknown", "status": "failed", "error": "Scraper crashed or returned None"}
+        for r in results
+    ]
 
     return {
         "query": item,
         "pincode": pincode,
         "cheapest_option": cheapest,
-        "all_results": results
+        "all_results": processed_results
     }
