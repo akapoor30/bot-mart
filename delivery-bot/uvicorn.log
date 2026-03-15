@@ -9,3 +9,32 @@ Parsed Card: {'name': 'MAGGI 2-Minute Instant Noodles, Made With Quality Spices'
 Parsed Card: {'name': 'MAGGI 2-Minute Instant Noodles, Made With Quality Spices', 'price': 15, 'weight': '75 g', 'is_ad': False, 'debug_text': '14 MINS\nMAGGI 2-Minute Instant Noodles, Made With Quality Spices\nEnjoy your favourite Masala taste\n75 g\n15'}
 Parsed Card: {'name': 'MAGGI 2-Minute Instant Noodles, Made With Quality Spices', 'price': 92, 'weight': '450 g', 'is_ad': False, 'debug_text': '14 MINS\nMAGGI 2-Minute Instant Noodles, Made With Quality Spices\n450 g\n4% OFF\n83\n87\n14 MINS\nMAGGI Double Masala Noodles\n95 g\n20\n14 MINS\nMaggi Spicy 2-Minute Spicy Garlic Noodles\n248 g\n16% OFF\n84\n100\n14 MINS\nMaggi Spicy Cheesy Instant Noodles,Yummy Cheese Meets MAGGI Noodles\n304 g\n16% OFF\n84\n100\n14 MINS\nMAGGI 2-Minute Instant Noodles, Made With Quality Spices\n900 g\n3% OFF\n173\n180\n14 MINS\nMAGGI 2-Minute Instant Noodles, Made With Quality Spices\n300 g\n58\n14 MINS\nMAGGI Nutri-licious Masala Veg Atta Noodles, Instant Noodles\n290 g\n8% OFF\n99\n108\n14 MINS\nMAGGI 2-Minute Special Masala Instant Noodles\n280 g\n100\n14 MINS\nMAGGI Masala Cuppa Noodles\n70 g\n55\n14 MINS\nMaggi Chilly Chow Cuppa Noodles\n70 g\n55\n14 MINS\nMAGGI Spicy Cheesy Instant Cuppa Noodles\n71.5 g\n65\n14 MINS\nMAGGI Spicy Garlic Instant Cuppa Noodles\n70.5 g\n65\n14 MINS\nMAGGI Spicy Manchurian Instant Cuppa Noodles\n70.5 g\n65\n14 MINS\nMAGGI Nutri-licious Masala Veg Atta Noodles, Instant Noodles\n435 g\n10% OFF\n151\n168\nSOLD OUT\nMaggi Spicy 2-Minute Spicy Manchurian Noodles\n244 g\n16% OFF\n77\n92\nSOLD OUT\nMaggi Spicy BBQ/Pepper Instant Noodles\n248 g\n16% OFF\n77\n92'}
 INFO:     127.0.0.1:61635 - "GET /compare?item=Maggi&pincode=560095 HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'app/main.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [69984]
+INFO:     Started server process [70474]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+Fallback: Found 32 ADD buttons
+Parsed Card: {'name': 'Nandini Pasteurised Toned Milk', 'price': 24, 'weight': '500 ml', 'is_ad': False, 'debug_text': '12 MINS\nNandini Pasteurised Toned Milk\nPure toned milk from Nandini, packed with nutrients.\n500 ml\n24'}
+Parsed Card: {'name': 'Nandini Shubham Milk', 'price': 27, 'weight': '500 ml', 'is_ad': False, 'debug_text': '12 MINS\nNandini Shubham Milk\nFresh milk from Nandini’s trusted dairy network\n500 ml\n27'}
+Parsed Card: {'name': 'Heritage Daily Health Toned Milk', 'price': 26, 'weight': '500 ml', 'is_ad': False, 'debug_text': '12 MINS\nHeritage Daily Health Toned Milk\nToned milk for daily health\n500 ml\n26'}
+INFO:     127.0.0.1:61772 - "GET /compare?item=Milk&pincode=560095 HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'app/models.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [70474]
+INFO:     Started server process [78358]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'app/auth.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [78358]
+INFO:     Started server process [78404]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
