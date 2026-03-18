@@ -4,3 +4,7 @@ playwright
 playwright-stealth
 python-dotenv
 pydantic
+sqlalchemy
+python-jose[cryptography]
+requests
+python-multipart

@@ -39,3 +39,36 @@ class PlatformSession(Base):
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
     user = relationship("User", back_populates="sessions")
+
+class CartItem(Base):
+    __tablename__ = "cart_items"
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
+    product_name = Column(String, nullable=False)
+    quantity = Column(Integer, default=1)
+    
+    # Preferred platform if selected, else null for "any"
+    preferred_platform = Column(Enum(PlatformName), nullable=True)
+    
+    created_at = Column(DateTime, default=datetime.utcnow)
+    
+    user = relationship("User", backref="cart_items")
+
+class PriceSnapshot(Base):
+    __tablename__ = "price_snapshots"
+
+    id = Column(Integer, primary_key=True, index=True)
+    product_name = Column(String, index=True, nullable=False)
+    platform = Column(Enum(PlatformName), nullable=False)
+    pincode = Column(String, nullable=False)
+    
+    # Store specific details
+    price = Column(Integer, nullable=False)
+    delivery_fee = Column(Integer, default=0)
+    handling_fee = Column(Integer, default=0)
+    platform_fee = Column(Integer, default=0)
+    
+    # Metadata
+    in_stock = Column(Integer, default=1) # 1 for True, 0 for False
+    scraped_at = Column(DateTime, default=datetime.utcnow)
