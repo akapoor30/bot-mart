@@ -14,7 +14,7 @@ from app.scraper.instamart import InstamartScraper
 
 # Database & Auth Imports
 from app.database import engine, get_db
-from app.models import Base, User
+from app.models import Base, User, PriceSnapshot, PlatformName
 from app.auth import get_current_user
 
 # Cart Router
@@ -73,14 +73,12 @@ async def sync_user_profile(
 # ==========================================
 @app.get("/compare")
 async def compare(
-    item: str, 
+    item: str,
     pincode: str = "110001",
-    current_user: dict = Depends(get_current_user) # <-- Secures the route! Requires a valid Token.
+    current_user: dict = Depends(get_current_user),
+    db: Session = Depends(get_db)
 ):
-    """
-    Now requires the user to be logged in via Keycloak.
-    Later, we will extract their saved platform cookies from PostgreSQL here.
-    """
+    """Run all three scrapers in parallel, return results, and cache prices for cart comparison."""
     # Initialize scrapers
     blinkit = BlinkitScraper()
     zepto = ZeptoScraper()
@@ -94,19 +92,47 @@ async def compare(
     ]
     
     results = await asyncio.gather(*tasks)
-    
-    # Filter out None results and handle errors
+
+    # Save successful results as PriceSnapshots so /cart/compare can read them
+    PLATFORM_MAP = {
+        "Blinkit": PlatformName.BLINKIT,
+        "Zepto": PlatformName.ZEPTO,
+        "Instamart": PlatformName.INSTAMART,
+    }
+    for r in results:
+        if r and r.get("status") == "success" and r.get("store") in PLATFORM_MAP:
+            platform_enum = PLATFORM_MAP[r["store"]]
+            # Delete stale snapshot for same SEARCH QUERY + pincode + platform
+            db.query(PriceSnapshot).filter(
+                PriceSnapshot.search_query == item.lower(),
+                PriceSnapshot.platform == platform_enum,
+                PriceSnapshot.pincode == pincode
+            ).delete()
+            snapshot = PriceSnapshot(
+                search_query=item.lower(),      # The user's original query, e.g. "milk"
+                product_name=r["name"],          # Platform-specific name, e.g. "Amul Taaza Toned Milk"
+                platform=platform_enum,
+                pincode=pincode,
+                price=r["price"],
+                delivery_fee=r.get("delivery_fee", 0),
+                handling_fee=r.get("handling_fee", 0),
+                platform_fee=r.get("platform_fee", 0),
+                in_stock=1,
+            )
+            db.add(snapshot)
+    db.commit()
+
+    # Filter and find cheapest
     valid_results = [r for r in results if r is not None and r.get("status") == "success"]
     cheapest = min(valid_results, key=lambda x: x["price"]) if valid_results else None
 
-    # Replace any None results with a failure dict for the response if they exist
     processed_results = [
-        r if r is not None else {"store": "Unknown", "status": "failed", "error": "Scraper crashed or returned None"}
+        r if r is not None else {"store": "Unknown", "status": "failed", "error": "Scraper returned None"}
         for r in results
     ]
 
     return {
-        "user": current_user["email"], # Proof that the bot knows who is searching
+        "user": current_user["email"],
         "query": item,
         "pincode": pincode,
         "cheapest_option": cheapest,

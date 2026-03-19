@@ -37,7 +37,9 @@ class CartItem(Base):
     __tablename__ = "cart_items"
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
-    product_name = Column(String, nullable=False)
+    # search_query is the original user query (e.g. "milk"), used for cross-platform matching
+    search_query = Column(String, nullable=False)
+    product_name = Column(String, nullable=True)  # Optional: specific product added
     quantity = Column(Integer, default=1)
     preferred_platform = Column(Enum(PlatformName), nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)
@@ -46,7 +48,9 @@ class CartItem(Base):
 class PriceSnapshot(Base):
     __tablename__ = "price_snapshots"
     id = Column(Integer, primary_key=True, index=True)
-    product_name = Column(String, index=True, nullable=False)
+    # search_query: the original user query that triggered this scrape (e.g. "milk")
+    search_query = Column(String, index=True, nullable=False)
+    product_name = Column(String, index=True, nullable=False)  # Platform-specific name
     platform = Column(Enum(PlatformName), nullable=False)
     pincode = Column(String, nullable=False)
     price = Column(Integer, nullable=False)

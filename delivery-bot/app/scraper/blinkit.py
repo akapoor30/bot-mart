@@ -10,7 +10,11 @@ class BlinkitScraper(BaseScraper):
             browser = await p.chromium.launch(
                 headless=False,
                 channel="chrome",
-                args=['--disable-blink-features=AutomationControlled']
+                args=[
+                    '--disable-blink-features=AutomationControlled',
+                    '--window-position=-3000,0',   # Move off-screen so user doesn't see it
+                    '--window-size=1280,900',
+                ]
             )
             
             session_path = os.path.join(os.path.dirname(__file__), "../../sessions/blinkit_auth.json")

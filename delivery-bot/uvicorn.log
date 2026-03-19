@@ -283,3 +283,1778 @@ INFO:     127.0.0.1:58599 - "GET /api/health HTTP/1.1" 404 Not Found
 INFO:     127.0.0.1:58599 - "GET /favicon.ico HTTP/1.1" 404 Not Found
 INFO:     127.0.0.1:58605 - "GET / HTTP/1.1" 200 OK
 INFO:     127.0.0.1:58606 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58723 - "OPTIONS /cart/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58725 - "OPTIONS /api/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58725 - "GET /api/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58723 - "GET /cart/ HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58764 - "GET /cart/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58765 - "GET /api/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58764 - "GET /cart/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58782 - "GET /cart/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58783 - "GET /api/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58782 - "GET /cart/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58789 - "OPTIONS /compare?item=Maggi&pincode=411057 HTTP/1.1" 200 OK
+Fallback: Found 32 ADD buttons
+Parsed Card: {'name': 'Maggi Masala-ae-Magic', 'price': 60, 'weight': '72 g', 'is_ad': False, 'debug_text': 'Previously Bought\n24 MINS\nMaggi Masala-ae-Magic\nAdd extraordinary taste to your daily dishes\n72 g\n60'}
+Parsed Card: {'name': 'MAGGI 2-Minute Instant Noodles, Made With Quality Spices', 'price': 58, 'weight': '300 g', 'is_ad': False, 'debug_text': '24 MINS\nMAGGI 2-Minute Instant Noodles, Made With Quality Spices\nEnjoy your favourite Masala taste\n300 g\n58'}
+Parsed Card: {'name': 'MAGGI 2-Minute Instant Noodles, Made With Quality Spices', 'price': 15, 'weight': '75 g', 'is_ad': False, 'debug_text': '24 MINS\nMAGGI 2-Minute Instant Noodles, Made With Quality Spices\nEnjoy your favourite Masala taste\n75 g\n15'}
+INFO:     127.0.0.1:58789 - "GET /compare?item=Maggi&pincode=411057 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58889 - "GET /cart/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58890 - "GET /api/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58913 - "GET /cart/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58914 - "GET /api/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58954 - "OPTIONS /cart/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58955 - "OPTIONS /api/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58954 - "GET /cart/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58955 - "GET /api/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58974 - "GET /cart/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58976 - "GET /api/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59024 - "GET /cart/ HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:59025 - "GET /api/me HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:59024 - "GET /cart/ HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:59059 - "GET /cart/ HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:59060 - "GET /api/me HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:59085 - "GET /cart/ HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:59086 - "GET /api/me HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:59097 - "OPTIONS /compare?item=Maggi&pincode=411057 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59097 - "GET /compare?item=Maggi&pincode=411057 HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:59099 - "GET /cart/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59117 - "GET /api/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59099 - "GET /cart/ HTTP/1.1" 200 OK
+Fallback: Found 46 ADD buttons
+Parsed Card: {'name': 'Maggi Masala-ae-Magic', 'price': 60, 'weight': '72 g', 'is_ad': False, 'debug_text': 'Previously Bought\n23 MINS\nMaggi Masala-ae-Magic\nAdd extraordinary taste to your daily dishes\n72 g\n60'}
+Parsed Card: {'name': 'MAGGI 2-Minute Instant Noodles, Made With Quality Spices', 'price': 58, 'weight': '300 g', 'is_ad': False, 'debug_text': '23 MINS\nMAGGI 2-Minute Instant Noodles, Made With Quality Spices\nEnjoy your favourite Masala taste\n300 g\n58'}
+Parsed Card: {'name': 'Wok Tok By Veeba Masala Instant Noodles', 'price': 79, 'weight': '66 g', 'is_ad': False, 'debug_text': '23 MINS\nWok Tok By Veeba Masala Instant Noodles\n66 g\n15\n23 MINS\nWok Tok By Veeba Schezwan Instant Noodles\n66 g\n20\n23 MINS\nWOK TOK BY VEEBA MASALA CUP NOODLES\n75.5 g\n59\n23 MINS\nWok Tok by Veeba Sichuan Chilli Oil Drizzle\n170 g\n15% OFF\n238\n280\n23 MINS\nWOK TOK BY VEEBA MANCHURIAN CUP NOODLES\n75.5 g\n65\n23 MINS\nWOK TOK BY VEEBA CHOWMEIN CUP NOODLES\n75.5 g\n65\n23 MINS\nWOK TOK BY VEEBA SPICY KOREAN CUP NOODLES\n75.5 g\n75\nSOLD OUT\nWok Tok By Veeba Korean Instant Noodles\n66 g\n34\nSOLD OUT\nWok Tok by Veeba Instant Noodles Kung Pao (no Maida,No palm oil) 92.5g\n92.5 g\n79'}
+INFO:     127.0.0.1:59124 - "GET /compare?item=Maggi&pincode=411057 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59213 - "OPTIONS /cart/add HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59213 - "POST /cart/add HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59213 - "GET /cart/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59213 - "OPTIONS /cart/compare?pincode=411057 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59215 - "GET /cart/compare?pincode=411057 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59222 - "OPTIONS /compare?item=Milk&pincode=411057 HTTP/1.1" 200 OK
+Fallback: Found 34 ADD buttons
+Parsed Card: {'name': 'Chitale Bandhu Full Cream Milk', 'price': 38, 'weight': '500 ml', 'is_ad': False, 'debug_text': '25 MINS\nChitale Bandhu Full Cream Milk\nCreamy and wholesome full cream milk from trusted dairy.\n500 ml\n38'}
+Parsed Card: {'name': 'Amul Moti Toned Milk', 'price': 32, 'weight': '450 ml', 'is_ad': False, 'debug_text': '25 MINS\nAmul Moti Toned Milk\nToned milk with balanced fat\n450 ml\n32'}
+Parsed Card: {'name': 'Amul Taaza Toned Milk', 'price': 75, 'weight': '', 'is_ad': False, 'debug_text': '25 MINS\nAmul Taaza Toned Milk\nCreamy & Smooth, Toned Milk.\n1 ltr\n75'}
+Parsed Card: {'name': "Sid's Farm Cow Milk", 'price': 72, 'weight': '500 ml', 'is_ad': False, 'debug_text': "25 MINS\nSid's Farm Cow Milk\n500 ml\n44\nSOLD OUT\nSid's Farm Toned Milk 500ml\n500 ml x 2\n72"}
+INFO:     127.0.0.1:59222 - "GET /compare?item=Milk&pincode=411057 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59224 - "POST /cart/add HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59224 - "GET /cart/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59224 - "GET /cart/compare?pincode=411057 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59321 - "GET /cart/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59322 - "GET /api/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59366 - "OPTIONS /compare?item=tab%20chocollate&pincode=411057 HTTP/1.1" 200 OK
+Fallback: Found 32 ADD buttons
+Parsed Card: {'name': 'Gourmet', 'price': 1499, 'weight': '300 g', 'is_ad': False, 'debug_text': 'Gourmet\n22 MINS\nLindt Gold Tab Chocolate, Almond\nSwiss premium chocolate with almond crunch\n300 g\n10% OFF\n1340\n1499'}
+Parsed Card: {'name': 'Lindt Extra Creamy Dark Tablet', 'price': 275, 'weight': '35 g', 'is_ad': False, 'debug_text': '22 MINS\nLindt Extra Creamy Dark Tablet\n35 g\n275'}
+Parsed Card: {'name': 'Nooky Mood Uplifting Chocolate for Couples', 'price': 349, 'weight': '40 g', 'is_ad': False, 'debug_text': '22 MINS\nNooky Mood Uplifting Chocolate for Couples\nMood Boost, Romantic Indulgence.\n40 g\n15% OFF\n296\n349'}
+Parsed Card: {'name': 'Lindt Extra Creamy Dark Tablet', 'price': 599, 'weight': '80 g', 'is_ad': False, 'debug_text': '22 MINS\nLindt Extra Creamy Dark Tablet\n80 g\n599'}
+Parsed Card: {'name': 'Lindt Extra Creamy Milk Tablet', 'price': 275, 'weight': '35 g', 'is_ad': False, 'debug_text': '22 MINS\nLindt Extra Creamy Milk Tablet\n35 g\n275'}
+INFO:     127.0.0.1:59368 - "OPTIONS /cart/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59459 - "OPTIONS /api/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59368 - "GET /cart/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59461 - "GET /api/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59366 - "GET /compare?item=tab%20chocollate&pincode=411057 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59466 - "OPTIONS /compare?item=tab%20chocolate&pincode=411057 HTTP/1.1" 200 OK
+Fallback: Found 32 ADD buttons
+Parsed Card: {'name': 'Gourmet', 'price': 1499, 'weight': '300 g', 'is_ad': False, 'debug_text': 'Gourmet\n21 MINS\nLindt Gold Tab Chocolate, Almond\nSwiss premium chocolate with almond crunch\n300 g\n10% OFF\n1340\n1499'}
+Parsed Card: {'name': 'Nooky Mood Uplifting Chocolate for Couples', 'price': 349, 'weight': '40 g', 'is_ad': False, 'debug_text': '21 MINS\nNooky Mood Uplifting Chocolate for Couples\nMood Boost, Romantic Indulgence.\n40 g\n15% OFF\n296\n349'}
+Parsed Card: {'name': 'Cadbury Dairy Milk Crackle Chocolate', 'price': 147, 'weight': '', 'is_ad': False, 'debug_text': '21 MINS\nCadbury Dairy Milk Crackle Chocolate\nSmooth Dairy Milk with crunchy rice crispies for extra fun.\n36 g x 3\n6% OFF\n138\n147'}
+Parsed Card: {'name': 'Handpicked', 'price': 499, 'weight': '120 g', 'is_ad': False, 'debug_text': 'Handpicked\n21 MINS\nNOICE Chocolate Bar Gift Box\nFestive chocolate medley\n120 g\n20% OFF\n399\n499'}
+INFO:     127.0.0.1:59466 - "GET /compare?item=tab%20chocolate&pincode=411057 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59591 - "GET /cart/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59593 - "GET /api/me HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'app/scraper/blinkit.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [5517]
+/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+INFO:     Started server process [8921]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'app/scraper/instamart.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [8921]
+/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+INFO:     Started server process [8931]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'app/main.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [8931]
+/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+INFO:     Started server process [8955]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'app/models/__init__.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [8955]
+/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+INFO:     Started server process [11812]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:59912 - "GET /api/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59911 - "GET /cart/ HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedColumn: column cart_items.search_query does not exist
+LINE 1: ...ems_id, cart_items.user_id AS cart_items_user_id, cart_items...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/uvicorn/protocols/http/h11_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/applications.py", line 1138, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 121, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 107, in app
+    response = await f(request)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 426, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 314, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/Users/anshkapoor/bot-mart/delivery-bot/app/cart/router.py", line 28, in list_cart
+    items = db.query(CartItem).filter(CartItem.user_id == user.id).all()
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 2704, in all
+    return self._iter().all()  # type: ignore
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 2857, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/sql/elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedColumn) column cart_items.search_query does not exist
+LINE 1: ...ems_id, cart_items.user_id AS cart_items_user_id, cart_items...
+                                                             ^
+
+[SQL: SELECT cart_items.id AS cart_items_id, cart_items.user_id AS cart_items_user_id, cart_items.search_query AS cart_items_search_query, cart_items.product_name AS cart_items_product_name, cart_items.quantity AS cart_items_quantity, cart_items.preferred_platform AS cart_items_preferred_platform, cart_items.created_at AS cart_items_created_at 
+FROM cart_items 
+WHERE cart_items.user_id = %(user_id_1)s]
+[parameters: {'user_id_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+WARNING:  StatReload detected changes in 'app/main.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [11812]
+/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+INFO:     Started server process [11840]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'app/cart/router.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [11840]
+/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+INFO:     Started server process [11867]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:59944 - "GET /cart/ HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedColumn: column cart_items.search_query does not exist
+LINE 1: ...ems_id, cart_items.user_id AS cart_items_user_id, cart_items...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/uvicorn/protocols/http/h11_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/applications.py", line 1138, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 121, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 107, in app
+    response = await f(request)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 426, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 314, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/Users/anshkapoor/bot-mart/delivery-bot/app/cart/router.py", line 24, in list_cart
+    items = db.query(CartItem).filter(CartItem.user_id == user.id).all()
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 2704, in all
+    return self._iter().all()  # type: ignore
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 2857, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/sql/elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedColumn) column cart_items.search_query does not exist
+LINE 1: ...ems_id, cart_items.user_id AS cart_items_user_id, cart_items...
+                                                             ^
+
+[SQL: SELECT cart_items.id AS cart_items_id, cart_items.user_id AS cart_items_user_id, cart_items.search_query AS cart_items_search_query, cart_items.product_name AS cart_items_product_name, cart_items.quantity AS cart_items_quantity, cart_items.preferred_platform AS cart_items_preferred_platform, cart_items.created_at AS cart_items_created_at 
+FROM cart_items 
+WHERE cart_items.user_id = %(user_id_1)s]
+[parameters: {'user_id_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+INFO:     127.0.0.1:59954 - "GET /cart/ HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedColumn: column cart_items.search_query does not exist
+LINE 1: ...ems_id, cart_items.user_id AS cart_items_user_id, cart_items...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/uvicorn/protocols/http/h11_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/applications.py", line 1138, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 121, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 107, in app
+    response = await f(request)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 426, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 314, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/Users/anshkapoor/bot-mart/delivery-bot/app/cart/router.py", line 24, in list_cart
+    items = db.query(CartItem).filter(CartItem.user_id == user.id).all()
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 2704, in all
+    return self._iter().all()  # type: ignore
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 2857, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/sql/elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedColumn) column cart_items.search_query does not exist
+LINE 1: ...ems_id, cart_items.user_id AS cart_items_user_id, cart_items...
+                                                             ^
+
+[SQL: SELECT cart_items.id AS cart_items_id, cart_items.user_id AS cart_items_user_id, cart_items.search_query AS cart_items_search_query, cart_items.product_name AS cart_items_product_name, cart_items.quantity AS cart_items_quantity, cart_items.preferred_platform AS cart_items_preferred_platform, cart_items.created_at AS cart_items_created_at 
+FROM cart_items 
+WHERE cart_items.user_id = %(user_id_1)s]
+[parameters: {'user_id_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+INFO:     127.0.0.1:59964 - "GET /api/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59963 - "GET /cart/ HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedColumn: column cart_items.search_query does not exist
+LINE 1: ...ems_id, cart_items.user_id AS cart_items_user_id, cart_items...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/uvicorn/protocols/http/h11_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/applications.py", line 1138, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 121, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 107, in app
+    response = await f(request)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 426, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 314, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/Users/anshkapoor/bot-mart/delivery-bot/app/cart/router.py", line 24, in list_cart
+    items = db.query(CartItem).filter(CartItem.user_id == user.id).all()
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 2704, in all
+    return self._iter().all()  # type: ignore
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 2857, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/sql/elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedColumn) column cart_items.search_query does not exist
+LINE 1: ...ems_id, cart_items.user_id AS cart_items_user_id, cart_items...
+                                                             ^
+
+[SQL: SELECT cart_items.id AS cart_items_id, cart_items.user_id AS cart_items_user_id, cart_items.search_query AS cart_items_search_query, cart_items.product_name AS cart_items_product_name, cart_items.quantity AS cart_items_quantity, cart_items.preferred_platform AS cart_items_preferred_platform, cart_items.created_at AS cart_items_created_at 
+FROM cart_items 
+WHERE cart_items.user_id = %(user_id_1)s]
+[parameters: {'user_id_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+INFO:     127.0.0.1:59987 - "OPTIONS /cart/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59988 - "OPTIONS /api/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59988 - "GET /api/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59987 - "GET /cart/ HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedColumn: column cart_items.search_query does not exist
+LINE 1: ...ems_id, cart_items.user_id AS cart_items_user_id, cart_items...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/uvicorn/protocols/http/h11_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/applications.py", line 1138, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 121, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 107, in app
+    response = await f(request)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 426, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 314, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/Users/anshkapoor/bot-mart/delivery-bot/app/cart/router.py", line 24, in list_cart
+    items = db.query(CartItem).filter(CartItem.user_id == user.id).all()
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 2704, in all
+    return self._iter().all()  # type: ignore
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 2857, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/sql/elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedColumn) column cart_items.search_query does not exist
+LINE 1: ...ems_id, cart_items.user_id AS cart_items_user_id, cart_items...
+                                                             ^
+
+[SQL: SELECT cart_items.id AS cart_items_id, cart_items.user_id AS cart_items_user_id, cart_items.search_query AS cart_items_search_query, cart_items.product_name AS cart_items_product_name, cart_items.quantity AS cart_items_quantity, cart_items.preferred_platform AS cart_items_preferred_platform, cart_items.created_at AS cart_items_created_at 
+FROM cart_items 
+WHERE cart_items.user_id = %(user_id_1)s]
+[parameters: {'user_id_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+INFO:     127.0.0.1:60026 - "GET /api/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60025 - "GET /cart/ HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedColumn: column cart_items.search_query does not exist
+LINE 1: ...ems_id, cart_items.user_id AS cart_items_user_id, cart_items...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/uvicorn/protocols/http/h11_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/applications.py", line 1138, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 121, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 107, in app
+    response = await f(request)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 426, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 314, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/Users/anshkapoor/bot-mart/delivery-bot/app/cart/router.py", line 24, in list_cart
+    items = db.query(CartItem).filter(CartItem.user_id == user.id).all()
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 2704, in all
+    return self._iter().all()  # type: ignore
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 2857, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/sql/elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedColumn) column cart_items.search_query does not exist
+LINE 1: ...ems_id, cart_items.user_id AS cart_items_user_id, cart_items...
+                                                             ^
+
+[SQL: SELECT cart_items.id AS cart_items_id, cart_items.user_id AS cart_items_user_id, cart_items.search_query AS cart_items_search_query, cart_items.product_name AS cart_items_product_name, cart_items.quantity AS cart_items_quantity, cart_items.preferred_platform AS cart_items_preferred_platform, cart_items.created_at AS cart_items_created_at 
+FROM cart_items 
+WHERE cart_items.user_id = %(user_id_1)s]
+[parameters: {'user_id_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+INFO:     127.0.0.1:60058 - "GET /api/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60057 - "GET /cart/ HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedColumn: column cart_items.search_query does not exist
+LINE 1: ...ems_id, cart_items.user_id AS cart_items_user_id, cart_items...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/uvicorn/protocols/http/h11_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/applications.py", line 1138, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 121, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 107, in app
+    response = await f(request)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 426, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 314, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/Users/anshkapoor/bot-mart/delivery-bot/app/cart/router.py", line 24, in list_cart
+    items = db.query(CartItem).filter(CartItem.user_id == user.id).all()
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 2704, in all
+    return self._iter().all()  # type: ignore
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 2857, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/sql/elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedColumn) column cart_items.search_query does not exist
+LINE 1: ...ems_id, cart_items.user_id AS cart_items_user_id, cart_items...
+                                                             ^
+
+[SQL: SELECT cart_items.id AS cart_items_id, cart_items.user_id AS cart_items_user_id, cart_items.search_query AS cart_items_search_query, cart_items.product_name AS cart_items_product_name, cart_items.quantity AS cart_items_quantity, cart_items.preferred_platform AS cart_items_preferred_platform, cart_items.created_at AS cart_items_created_at 
+FROM cart_items 
+WHERE cart_items.user_id = %(user_id_1)s]
+[parameters: {'user_id_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+INFO:     127.0.0.1:60076 - "OPTIONS /cart/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60077 - "OPTIONS /api/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60077 - "GET /api/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60076 - "GET /cart/ HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedColumn: column cart_items.search_query does not exist
+LINE 1: ...ems_id, cart_items.user_id AS cart_items_user_id, cart_items...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/uvicorn/protocols/http/h11_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/applications.py", line 1138, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 121, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 107, in app
+    response = await f(request)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 426, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 314, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/Users/anshkapoor/bot-mart/delivery-bot/app/cart/router.py", line 24, in list_cart
+    items = db.query(CartItem).filter(CartItem.user_id == user.id).all()
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 2704, in all
+    return self._iter().all()  # type: ignore
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 2857, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/sql/elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedColumn) column cart_items.search_query does not exist
+LINE 1: ...ems_id, cart_items.user_id AS cart_items_user_id, cart_items...
+                                                             ^
+
+[SQL: SELECT cart_items.id AS cart_items_id, cart_items.user_id AS cart_items_user_id, cart_items.search_query AS cart_items_search_query, cart_items.product_name AS cart_items_product_name, cart_items.quantity AS cart_items_quantity, cart_items.preferred_platform AS cart_items_preferred_platform, cart_items.created_at AS cart_items_created_at 
+FROM cart_items 
+WHERE cart_items.user_id = %(user_id_1)s]
+[parameters: {'user_id_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+INFO:     127.0.0.1:60115 - "GET /api/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60114 - "GET /cart/ HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedColumn: column cart_items.search_query does not exist
+LINE 1: ...ems_id, cart_items.user_id AS cart_items_user_id, cart_items...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/uvicorn/protocols/http/h11_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/applications.py", line 1138, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 121, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 107, in app
+    response = await f(request)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 426, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 314, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/Users/anshkapoor/bot-mart/delivery-bot/app/cart/router.py", line 24, in list_cart
+    items = db.query(CartItem).filter(CartItem.user_id == user.id).all()
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 2704, in all
+    return self._iter().all()  # type: ignore
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 2857, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/sql/elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedColumn) column cart_items.search_query does not exist
+LINE 1: ...ems_id, cart_items.user_id AS cart_items_user_id, cart_items...
+                                                             ^
+
+[SQL: SELECT cart_items.id AS cart_items_id, cart_items.user_id AS cart_items_user_id, cart_items.search_query AS cart_items_search_query, cart_items.product_name AS cart_items_product_name, cart_items.quantity AS cart_items_quantity, cart_items.preferred_platform AS cart_items_preferred_platform, cart_items.created_at AS cart_items_created_at 
+FROM cart_items 
+WHERE cart_items.user_id = %(user_id_1)s]
+[parameters: {'user_id_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+INFO:     127.0.0.1:60138 - "GET /api/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60137 - "GET /cart/ HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedColumn: column cart_items.search_query does not exist
+LINE 1: ...ems_id, cart_items.user_id AS cart_items_user_id, cart_items...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/uvicorn/protocols/http/h11_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/applications.py", line 1138, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 121, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 107, in app
+    response = await f(request)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 426, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 314, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/Users/anshkapoor/bot-mart/delivery-bot/app/cart/router.py", line 24, in list_cart
+    items = db.query(CartItem).filter(CartItem.user_id == user.id).all()
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 2704, in all
+    return self._iter().all()  # type: ignore
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 2857, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/sql/elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedColumn) column cart_items.search_query does not exist
+LINE 1: ...ems_id, cart_items.user_id AS cart_items_user_id, cart_items...
+                                                             ^
+
+[SQL: SELECT cart_items.id AS cart_items_id, cart_items.user_id AS cart_items_user_id, cart_items.search_query AS cart_items_search_query, cart_items.product_name AS cart_items_product_name, cart_items.quantity AS cart_items_quantity, cart_items.preferred_platform AS cart_items_preferred_platform, cart_items.created_at AS cart_items_created_at 
+FROM cart_items 
+WHERE cart_items.user_id = %(user_id_1)s]
+[parameters: {'user_id_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+INFO:     127.0.0.1:60168 - "OPTIONS /cart/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60169 - "OPTIONS /api/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60169 - "GET /api/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60168 - "GET /cart/ HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedColumn: column cart_items.search_query does not exist
+LINE 1: ...ems_id, cart_items.user_id AS cart_items_user_id, cart_items...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/uvicorn/protocols/http/h11_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/applications.py", line 1138, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 121, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 107, in app
+    response = await f(request)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 426, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 314, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/Users/anshkapoor/bot-mart/delivery-bot/app/cart/router.py", line 24, in list_cart
+    items = db.query(CartItem).filter(CartItem.user_id == user.id).all()
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 2704, in all
+    return self._iter().all()  # type: ignore
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 2857, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/sql/elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedColumn) column cart_items.search_query does not exist
+LINE 1: ...ems_id, cart_items.user_id AS cart_items_user_id, cart_items...
+                                                             ^
+
+[SQL: SELECT cart_items.id AS cart_items_id, cart_items.user_id AS cart_items_user_id, cart_items.search_query AS cart_items_search_query, cart_items.product_name AS cart_items_product_name, cart_items.quantity AS cart_items_quantity, cart_items.preferred_platform AS cart_items_preferred_platform, cart_items.created_at AS cart_items_created_at 
+FROM cart_items 
+WHERE cart_items.user_id = %(user_id_1)s]
+[parameters: {'user_id_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+INFO:     127.0.0.1:60209 - "GET /api/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60208 - "GET /cart/ HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedColumn: column cart_items.search_query does not exist
+LINE 1: ...ems_id, cart_items.user_id AS cart_items_user_id, cart_items...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/uvicorn/protocols/http/h11_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/applications.py", line 1138, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 121, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 107, in app
+    response = await f(request)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 426, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 314, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/Users/anshkapoor/bot-mart/delivery-bot/app/cart/router.py", line 24, in list_cart
+    items = db.query(CartItem).filter(CartItem.user_id == user.id).all()
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 2704, in all
+    return self._iter().all()  # type: ignore
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 2857, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/sql/elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedColumn) column cart_items.search_query does not exist
+LINE 1: ...ems_id, cart_items.user_id AS cart_items_user_id, cart_items...
+                                                             ^
+
+[SQL: SELECT cart_items.id AS cart_items_id, cart_items.user_id AS cart_items_user_id, cart_items.search_query AS cart_items_search_query, cart_items.product_name AS cart_items_product_name, cart_items.quantity AS cart_items_quantity, cart_items.preferred_platform AS cart_items_preferred_platform, cart_items.created_at AS cart_items_created_at 
+FROM cart_items 
+WHERE cart_items.user_id = %(user_id_1)s]
+[parameters: {'user_id_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+INFO:     127.0.0.1:60229 - "GET /api/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60228 - "GET /cart/ HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedColumn: column cart_items.search_query does not exist
+LINE 1: ...ems_id, cart_items.user_id AS cart_items_user_id, cart_items...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/uvicorn/protocols/http/h11_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/applications.py", line 1138, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 121, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 107, in app
+    response = await f(request)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 426, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 314, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/Users/anshkapoor/bot-mart/delivery-bot/app/cart/router.py", line 24, in list_cart
+    items = db.query(CartItem).filter(CartItem.user_id == user.id).all()
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 2704, in all
+    return self._iter().all()  # type: ignore
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 2857, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/sql/elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedColumn) column cart_items.search_query does not exist
+LINE 1: ...ems_id, cart_items.user_id AS cart_items_user_id, cart_items...
+                                                             ^
+
+[SQL: SELECT cart_items.id AS cart_items_id, cart_items.user_id AS cart_items_user_id, cart_items.search_query AS cart_items_search_query, cart_items.product_name AS cart_items_product_name, cart_items.quantity AS cart_items_quantity, cart_items.preferred_platform AS cart_items_preferred_platform, cart_items.created_at AS cart_items_created_at 
+FROM cart_items 
+WHERE cart_items.user_id = %(user_id_1)s]
+[parameters: {'user_id_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+INFO:     127.0.0.1:60254 - "OPTIONS /cart/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60255 - "OPTIONS /api/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60255 - "GET /api/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60254 - "GET /cart/ HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedColumn: column cart_items.search_query does not exist
+LINE 1: ...ems_id, cart_items.user_id AS cart_items_user_id, cart_items...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/uvicorn/protocols/http/h11_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/applications.py", line 1138, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 121, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 107, in app
+    response = await f(request)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 426, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 314, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/Users/anshkapoor/bot-mart/delivery-bot/app/cart/router.py", line 24, in list_cart
+    items = db.query(CartItem).filter(CartItem.user_id == user.id).all()
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 2704, in all
+    return self._iter().all()  # type: ignore
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 2857, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/sql/elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedColumn) column cart_items.search_query does not exist
+LINE 1: ...ems_id, cart_items.user_id AS cart_items_user_id, cart_items...
+                                                             ^
+
+[SQL: SELECT cart_items.id AS cart_items_id, cart_items.user_id AS cart_items_user_id, cart_items.search_query AS cart_items_search_query, cart_items.product_name AS cart_items_product_name, cart_items.quantity AS cart_items_quantity, cart_items.preferred_platform AS cart_items_preferred_platform, cart_items.created_at AS cart_items_created_at 
+FROM cart_items 
+WHERE cart_items.user_id = %(user_id_1)s]
+[parameters: {'user_id_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+INFO:     127.0.0.1:60291 - "GET /api/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60290 - "GET /cart/ HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedColumn: column cart_items.search_query does not exist
+LINE 1: ...ems_id, cart_items.user_id AS cart_items_user_id, cart_items...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/uvicorn/protocols/http/h11_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/applications.py", line 1138, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 121, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 107, in app
+    response = await f(request)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 426, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 314, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/Users/anshkapoor/bot-mart/delivery-bot/app/cart/router.py", line 24, in list_cart
+    items = db.query(CartItem).filter(CartItem.user_id == user.id).all()
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 2704, in all
+    return self._iter().all()  # type: ignore
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 2857, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/sql/elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedColumn) column cart_items.search_query does not exist
+LINE 1: ...ems_id, cart_items.user_id AS cart_items_user_id, cart_items...
+                                                             ^
+
+[SQL: SELECT cart_items.id AS cart_items_id, cart_items.user_id AS cart_items_user_id, cart_items.search_query AS cart_items_search_query, cart_items.product_name AS cart_items_product_name, cart_items.quantity AS cart_items_quantity, cart_items.preferred_platform AS cart_items_preferred_platform, cart_items.created_at AS cart_items_created_at 
+FROM cart_items 
+WHERE cart_items.user_id = %(user_id_1)s]
+[parameters: {'user_id_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+INFO:     127.0.0.1:60311 - "GET /api/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60310 - "GET /cart/ HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedColumn: column cart_items.search_query does not exist
+LINE 1: ...ems_id, cart_items.user_id AS cart_items_user_id, cart_items...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/uvicorn/protocols/http/h11_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/applications.py", line 1138, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 121, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 107, in app
+    response = await f(request)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 426, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 314, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/Users/anshkapoor/bot-mart/delivery-bot/app/cart/router.py", line 24, in list_cart
+    items = db.query(CartItem).filter(CartItem.user_id == user.id).all()
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 2704, in all
+    return self._iter().all()  # type: ignore
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 2857, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/sql/elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedColumn) column cart_items.search_query does not exist
+LINE 1: ...ems_id, cart_items.user_id AS cart_items_user_id, cart_items...
+                                                             ^
+
+[SQL: SELECT cart_items.id AS cart_items_id, cart_items.user_id AS cart_items_user_id, cart_items.search_query AS cart_items_search_query, cart_items.product_name AS cart_items_product_name, cart_items.quantity AS cart_items_quantity, cart_items.preferred_platform AS cart_items_preferred_platform, cart_items.created_at AS cart_items_created_at 
+FROM cart_items 
+WHERE cart_items.user_id = %(user_id_1)s]
+[parameters: {'user_id_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+INFO:     127.0.0.1:60338 - "OPTIONS /cart/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60339 - "OPTIONS /api/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60339 - "GET /api/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60338 - "GET /cart/ HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedColumn: column cart_items.search_query does not exist
+LINE 1: ...ems_id, cart_items.user_id AS cart_items_user_id, cart_items...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/uvicorn/protocols/http/h11_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/applications.py", line 1138, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 121, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 107, in app
+    response = await f(request)
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 426, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/fastapi/routing.py", line 314, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/Users/anshkapoor/bot-mart/delivery-bot/app/cart/router.py", line 24, in list_cart
+    items = db.query(CartItem).filter(CartItem.user_id == user.id).all()
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 2704, in all
+    return self._iter().all()  # type: ignore
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 2857, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/sql/elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/anshkapoor/bot-mart/venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedColumn) column cart_items.search_query does not exist
+LINE 1: ...ems_id, cart_items.user_id AS cart_items_user_id, cart_items...
+                                                             ^
+
+[SQL: SELECT cart_items.id AS cart_items_id, cart_items.user_id AS cart_items_user_id, cart_items.search_query AS cart_items_search_query, cart_items.product_name AS cart_items_product_name, cart_items.quantity AS cart_items_quantity, cart_items.preferred_platform AS cart_items_preferred_platform, cart_items.created_at AS cart_items_created_at 
+FROM cart_items 
+WHERE cart_items.user_id = %(user_id_1)s]
+[parameters: {'user_id_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+INFO:     127.0.0.1:60399 - "GET /cart/ HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:60400 - "GET /api/me HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:60399 - "GET /cart/ HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:60429 - "GET /cart/ HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:60430 - "GET /api/me HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:60453 - "GET /cart/ HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:60454 - "GET /api/me HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:60480 - "GET /cart/ HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:60481 - "GET /api/me HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:65257 - "GET /cart/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65258 - "GET /api/me HTTP/1.1" 200 OK

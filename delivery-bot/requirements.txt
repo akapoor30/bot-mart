@@ -8,3 +8,4 @@ sqlalchemy
 python-jose[cryptography]
 requests
 python-multipart
+psycopg2-binary

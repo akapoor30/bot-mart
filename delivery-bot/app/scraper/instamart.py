@@ -10,9 +10,13 @@ class InstamartScraper(BaseScraper):
         async with async_playwright() as p:
             # Datadome blocks headless chromium. Must use visible Chrome.
             browser = await p.chromium.launch(
-                headless=False, 
-                channel="chrome", 
-                args=['--disable-blink-features=AutomationControlled']
+                headless=False,
+                channel="chrome",
+                args=[
+                    '--disable-blink-features=AutomationControlled',
+                    '--window-position=-3000,0',   # Move off-screen so user doesn't see it
+                    '--window-size=1280,900',
+                ]
             )
             
             # Load the authenticated session
