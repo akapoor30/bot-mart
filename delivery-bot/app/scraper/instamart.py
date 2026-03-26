@@ -3,6 +3,7 @@ import os
 from playwright.async_api import async_playwright
 from playwright_stealth import Stealth
 from .base import BaseScraper
+from .fee_utils import parse_fees_from_text
 import re
 
 class InstamartScraper(BaseScraper):
@@ -219,17 +220,59 @@ class InstamartScraper(BaseScraper):
                                         "price": product_data['price'],
                                         "weight": product_data['weight'],
                                         "store": "Instamart",
-                                        "in_stock": True
+                                        "in_stock": True,
+                                        "_btn_index": i,  # Track which button matched
                                     })
+                                    break  # Only need the first match
                                     
                             except Exception as e:
                                 print(f"Error parsing Instamart fallback card {i}: {e}")
                                 
                         if results:
+                            # Scrape fees: click ADD on matched product, go to instamart cart
+                            fees = {"delivery_fee": 0, "handling_fee": 0, "platform_fee": 0}
+                            try:
+                                matched_btn = add_btns.nth(results[0]["_btn_index"])
+                                await matched_btn.click()
+                                await page.wait_for_timeout(3000)
+                                await page.goto("https://www.swiggy.com/instamart/cart", wait_until="domcontentloaded", timeout=20000)
+                                await page.wait_for_timeout(3000)
+                                # Click "View Detailed Bill" if present to expand fees
+                                view_bill = page.locator('text="View Detailed Bill"')
+                                if await view_bill.count() > 0:
+                                    await view_bill.first.click()
+                                    await page.wait_for_timeout(1500)
+                                # Use JS to find the actual fees section (avoid product price lines)
+                                bill_text = await page.evaluate('''() => {
+                                    const all = document.querySelectorAll("div, section");
+                                    for (const el of all) {
+                                        const t = el.innerText || "";
+                                        if ((t.includes("Delivery fee") || t.includes("Handling fee") || t.includes("Platform fee"))
+                                            && t.length < 1000 && !t.includes("quantity")) return t;
+                                    }
+                                    return "";
+                                }''')
+                                if bill_text:
+                                    fees = parse_fees_from_text(bill_text)
+                                    print(f"Instamart fees scraped (fallback): {fees}")
+                                else:
+                                    print("Instamart: Fee section not found on cart page")
+                                # Clear cart: go back and click — button
+                                await page.go_back()
+                                await page.wait_for_timeout(2000)
+                                minus = page.locator('div[aria-label="Remove item from cart"], button:has-text("\u2212")')
+                                if await minus.count() > 0:
+                                    await minus.first.click()
+                            except Exception as fee_err:
+                                print(f"Instamart fee scraping failed (non-fatal): {fee_err}")
+
                             return {
                                 "store": "Instamart",
                                 "name": results[0]["name"],
                                 "price": results[0]["price"],
+                                "delivery_fee": fees.get("delivery_fee", 0),
+                                "handling_fee": fees.get("handling_fee", 0),
+                                "platform_fee": fees.get("platform_fee", 0),
                                 "status": "success"
                             }
                         return {"store": "Instamart", "status": "failed", "error": "No matching products found"}
@@ -289,11 +332,35 @@ class InstamartScraper(BaseScraper):
                             print(f"Error parsing Instamart card {i}: {e}")
 
                     if results:
-                        # Return the first one matching the old format
+                        # Scrape fees: click ADD on the first matched card
+                        fees = {"delivery_fee": 0, "handling_fee": 0, "platform_fee": 0}
+                        try:
+                            first_card = product_cards.nth(0)
+                            add_btn = first_card.locator('div[aria-label="Add item to cart"]')
+                            if await add_btn.count() > 0:
+                                await add_btn.first.click()
+                                await page.wait_for_timeout(3000)
+                                await page.goto("https://www.swiggy.com/instamart/cart", wait_until="domcontentloaded", timeout=20000)
+                                await page.wait_for_timeout(3000)
+                                checkout_text = await page.inner_text("body")
+                                fees = parse_fees_from_text(checkout_text)
+                                print(f"Instamart fees scraped: {fees}")
+                                # Clear cart
+                                await page.go_back()
+                                await page.wait_for_timeout(2000)
+                                minus = page.locator('div[aria-label="Remove item from cart"]')
+                                if await minus.count() > 0:
+                                    await minus.first.click()
+                        except Exception as fee_err:
+                            print(f"Instamart fee scraping failed (non-fatal): {fee_err}")
+
                         return {
                             "store": "Instamart",
                             "name": results[0]["name"],
-                            "price": results[0]["price"],
+                            "price": int(results[0]["price"]),
+                            "delivery_fee": fees.get("delivery_fee", 0),
+                            "handling_fee": fees.get("handling_fee", 0),
+                            "platform_fee": fees.get("platform_fee", 0),
                             "status": "success"
                         }
                     
