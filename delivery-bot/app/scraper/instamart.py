@@ -237,17 +237,24 @@ class InstamartScraper(BaseScraper):
                                 await page.wait_for_timeout(3000)
                                 await page.goto("https://www.swiggy.com/instamart/cart", wait_until="domcontentloaded", timeout=20000)
                                 await page.wait_for_timeout(3000)
-                                # Click "View Detailed Bill" if present to expand fees
-                                view_bill = page.locator('text="View Detailed Bill"')
+                                # Click "View Detailed Bill" to expand full fee breakdown
+                                view_bill = page.get_by_text("View Detailed Bill")
                                 if await view_bill.count() > 0:
                                     await view_bill.first.click()
                                     await page.wait_for_timeout(1500)
-                                # Use JS to find the actual fees section (avoid product price lines)
+                                # JS: find the BILL DETAILS section by its heading
+                                # Instamart uses: "Delivery Partner Fee", "Handling Fee", "Late Night Fee"
                                 bill_text = await page.evaluate('''() => {
                                     const all = document.querySelectorAll("div, section");
                                     for (const el of all) {
                                         const t = el.innerText || "";
-                                        if ((t.includes("Delivery fee") || t.includes("Handling fee") || t.includes("Platform fee"))
+                                        if ((t.includes("BILL DETAILS") || t.toUpperCase().includes("BILL DETAILS"))
+                                            && t.includes("Fee") && t.length < 2000) return t;
+                                    }
+                                    // Fallback: element with Handling Fee + no product quantity text
+                                    for (const el of all) {
+                                        const t = el.innerText || "";
+                                        if (t.includes("Handling Fee") && t.includes("Fee")
                                             && t.length < 1000 && !t.includes("quantity")) return t;
                                     }
                                     return "";
@@ -273,6 +280,7 @@ class InstamartScraper(BaseScraper):
                                 "delivery_fee": fees.get("delivery_fee", 0),
                                 "handling_fee": fees.get("handling_fee", 0),
                                 "platform_fee": fees.get("platform_fee", 0),
+                                "gst_fee": fees.get("gst_fee", 0),
                                 "status": "success"
                             }
                         return {"store": "Instamart", "status": "failed", "error": "No matching products found"}
@@ -342,9 +350,31 @@ class InstamartScraper(BaseScraper):
                                 await page.wait_for_timeout(3000)
                                 await page.goto("https://www.swiggy.com/instamart/cart", wait_until="domcontentloaded", timeout=20000)
                                 await page.wait_for_timeout(3000)
-                                checkout_text = await page.inner_text("body")
-                                fees = parse_fees_from_text(checkout_text)
-                                print(f"Instamart fees scraped: {fees}")
+                                # Click "View Detailed Bill" to expand full fee breakdown
+                                view_bill = page.get_by_text("View Detailed Bill")
+                                if await view_bill.count() > 0:
+                                    await view_bill.first.click()
+                                    await page.wait_for_timeout(1500)
+                                # JS: find the BILL DETAILS section (Instamart uses capitalised heading)
+                                bill_text = await page.evaluate('''() => {
+                                    const all = document.querySelectorAll("div, section");
+                                    for (const el of all) {
+                                        const t = el.innerText || "";
+                                        if ((t.includes("BILL DETAILS") || t.toUpperCase().includes("BILL DETAILS"))
+                                            && t.includes("Fee") && t.length < 2000) return t;
+                                    }
+                                    for (const el of all) {
+                                        const t = el.innerText || "";
+                                        if (t.includes("Handling Fee") && t.includes("Fee")
+                                            && t.length < 1000 && !t.includes("quantity")) return t;
+                                    }
+                                    return "";
+                                }''')
+                                if bill_text:
+                                    fees = parse_fees_from_text(bill_text)
+                                    print(f"Instamart fees scraped: {fees}")
+                                else:
+                                    print("Instamart: BILL DETAILS section not found")
                                 # Clear cart
                                 await page.go_back()
                                 await page.wait_for_timeout(2000)
@@ -361,6 +391,7 @@ class InstamartScraper(BaseScraper):
                             "delivery_fee": fees.get("delivery_fee", 0),
                             "handling_fee": fees.get("handling_fee", 0),
                             "platform_fee": fees.get("platform_fee", 0),
+                            "gst_fee": fees.get("gst_fee", 0),
                             "status": "success"
                         }
                     

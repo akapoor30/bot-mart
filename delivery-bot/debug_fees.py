@@ -174,20 +174,28 @@ async def debug_instamart():
             await page.wait_for_timeout(3000)
             await page.screenshot(path="tmp/debug_instamart_cart.png")
 
-            # Try clicking "View Detailed Bill" first
-            view_bill = page.locator('text="View Detailed Bill"')
+            # Click 'View Detailed Bill' to expand full fee breakdown
+            view_bill = page.get_by_text("View Detailed Bill")
             if await view_bill.count() > 0:
                 print("   Clicking 'View Detailed Bill'...")
                 await view_bill.first.click()
                 await page.wait_for_timeout(1500)
+                await page.screenshot(path="tmp/debug_instamart_bill.png")
 
-            print("5. Extracting fee section via JS (ignoring product price lines)...")
+            print("5. Extracting 'BILL DETAILS' section via JS...")
             bill_text = await page.evaluate('''() => {
                 const all = document.querySelectorAll("div, section");
+                // Instamart uses capitalised "BILL DETAILS" heading
                 for (const el of all) {
                     const t = el.innerText || "";
-                    if ((t.includes("Delivery fee") || t.includes("Handling fee") || t.includes("Platform fee"))
-                        && t.length < 1000 && !t.includes("quantity")) return t;
+                    if ((t.includes("BILL DETAILS") || t.toUpperCase().includes("BILL DETAILS"))
+                        && t.includes("Fee") && t.length < 2000) return t;
+                }
+                // Fallback: element with Handling Fee, not a product list
+                for (const el of all) {
+                    const t = el.innerText || "";
+                    if (t.includes("Handling Fee") && t.length < 1000
+                        && !t.includes("quantity")) return t;
                 }
                 return "FEE SECTION NOT FOUND";
             }''')

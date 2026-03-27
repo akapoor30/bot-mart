@@ -82,11 +82,14 @@ class ZeptoScraper(BaseScraper):
 
                 if has_session:
                     try:
-                        # Click the ADD button inside the matched product card via JavaScript
-                        await matched_link.evaluate('''el => {
-                            const btn = el.querySelector('button');
-                            if (btn) btn.click();
-                        }''')
+                        # Use Playwright native click (not JS) — Zepto is a React app,
+                        # JS el.click() doesn't trigger synthetic events
+                        add_btn = matched_link.locator("button").first
+                        if await add_btn.count() > 0:
+                            await add_btn.click()
+                        else:
+                            # Fallback to JS if no button found
+                            await matched_link.evaluate("el => { const b = el.querySelector('button'); if (b) b.click(); }")
                         await page.wait_for_timeout(3000)
                         
                         # Zepto opens cart as a sidebar via ?cart=open on the CURRENT search page
@@ -136,6 +139,7 @@ class ZeptoScraper(BaseScraper):
                     "delivery_fee": fees.get("delivery_fee", 0),
                     "handling_fee": fees.get("handling_fee", 0),
                     "platform_fee": fees.get("platform_fee", 0),
+                    "gst_fee": fees.get("gst_fee", 0),
                     "status": "success"
                 }
 

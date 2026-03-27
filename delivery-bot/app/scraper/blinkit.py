@@ -190,6 +190,7 @@ class BlinkitScraper(BaseScraper):
                     "delivery_fee": fees.get("delivery_fee", 0),
                     "handling_fee": fees.get("handling_fee", 0),
                     "platform_fee": fees.get("platform_fee", 0),
+                    "gst_fee": fees.get("gst_fee", 0),
                     "status": "success"
                 }
 
