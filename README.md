@@ -1,208 +1,214 @@
-# 🛒 Delivery Bot (Bot-Mart)
+# 🛒 Bot-Mart
 
-Delivery Bot is an automated quick commerce aggregator that searches for products across India's top rapid delivery platforms: **Blinkit**, **Zepto**, and **Swiggy Instamart**. It compares prices in real-time and identifies the cheapest option for your specific pincode.
-
-## ✨ Features
-
-- **Multi-Platform Scraping**: Concurrently searches Blinkit, Zepto, and Instamart using Playwright.
-- **Anti-Bot Bypass**: Uses headed Chrome and authenticated browser sessions to bypass strict bot-protection systems like Datadome (Swiggy).
-- **Session-Based Location**: Saves your delivery location context so the scrapers can easily find area-specific pricing without manual intervention on every run.
-- **FastAPI Orchestrator**: A lightweight backend API (`/compare`) that runs the scrapers in asyncio parallel threads.
-- **Premium Glassmorphic UI**: A beautifully designed Vanilla HTML/CSS/JS frontend to interact with the bot without using the terminal or cURL.
-
-## 🚀 Getting Started
-
-### 1. Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/akapoor30/bot-mart.git
-cd bot-mart
-
-# Create and activate a virtual environment
-python3 -m venv venv
-source venv/bin/activate
-
-# Install dependencies
-pip install -r requirements.txt
-playwright install
-```
-
-### 2. Generate Authenticated Sessions (Crucial for Instamart & Blinkit)
-Both Instamart and Blinkit require to know your location, and Swiggy actively blocks headless bots. To fix this, we generate real authenticated sessions:
-
-```bash
-cd delivery-bot
-
-# 1. Generate Blinkit Session (Set your location)
-python generate_blinkit_session.py
-# (Wait for browser, set your pincode, return to terminal and press Enter)
-
-# 2. Generate Swiggy Session (Log in & Set location)
-python generate_swiggy_session.py
-# (Wait for browser, log in via OTP, set your location, return to terminal and press Enter)
-```
-
-### 3. Start the Backend API
-
-```bash
-uvicorn app.main:app --reload
-```
-The FastAPI server will start at `http://127.0.0.1:8000`.
-
-### 4. Open the UI Dashboard
-With the Uvicorn server running, navigate to the `frontend/` folder in your file explorer and double-click `index.html` to open it in your browser. Enter a product name and your pincode, and the bot will orchestrate the scraping in real-time!
-
-## 🧪 API Endpoints
-
-- `GET /` : Health check.
-- `GET /compare?item=<Product>&pincode=<Pincode>` : Runs all three scrapers simultaneously and returns a JSON payload containing the cheapest option and all results.
-
-## 📁 Repository Structure
-- `/delivery-bot/app/main.py`: The FastAPI Orchestrator.
-- `/delivery-bot/app/scraper/`: Contains `blinkit.py`, `zepto.py`, `instamart.py`.
-- `/delivery-bot/sessions/`: Where your `blinkit_auth.json` and `swiggy_auth.json` cookies are stored.
-- `/frontend/`: Contains the Vanilla Web UI (`index.html`, `style.css`, `app.js`).
-- `/delivery-bot/flow.md`: Detailed breakdown of parallel scraping logic.
-- `instamart_fix.md`: Technical explanation of Swiggy Anti-bot bypasses.
-
-
-# 🛒 Bot-Mart v2 — Auth + Smart Cart
-
-## What's New in v2
-
-- ✅ **JWT Authentication** — Register, login, refresh tokens, protected routes
-- ✅ **Per-user Cart** — Items stored in DB per user with price snapshots
-- ✅ **Cart Total Comparison** — Compare full cart cost across all platforms including all fees
-- ✅ **Role-based Access** — `user` and `admin` roles
-- ✅ **SQLite DB** — Zero-config local DB (swap to PostgreSQL for production)
+A quick-commerce price comparison bot that searches **Blinkit**, **Zepto**, and **Swiggy Instamart** simultaneously, compares prices (including delivery, handling, and platform fees), and tells you where to order from.
 
 ---
 
-## Project Structure
+## ✨ Features
+
+- **Real-time multi-platform scraping** — Blinkit, Zepto, and Instamart searched in parallel
+- **Full fee breakdown** — scrapes actual delivery fee, handling fee, and platform fee from each platform's checkout page (not hardcoded)
+- **Smart cart** — add multiple items, compare total cost across all 3 platforms
+- **Keycloak auth** — JWT-protected endpoints, users synced to local DB
+- **React frontend** — search, results grid with cheapest badge, cart panel with total comparison
+- **Anti-bot bypass** — headed Chrome + saved sessions for Blinkit and Instamart (Swiggy uses Datadome)
+
+---
+
+## 📁 Project Structure
 
 ```
 bot-mart/
 ├── delivery-bot/
 │   ├── app/
-│   │   ├── auth/
-│   │   │   ├── router.py       # /auth/register, /auth/login, /auth/refresh, /auth/me
-│   │   │   └── utils.py        # JWT encode/decode, bcrypt hashing
+│   │   ├── scraper/
+│   │   │   ├── base.py           # BaseScraper interface
+│   │   │   ├── blinkit.py        # Blinkit scraper + fee scraping
+│   │   │   ├── zepto.py          # Zepto scraper + fee scraping
+│   │   │   ├── instamart.py      # Instamart scraper + fee scraping
+│   │   │   └── fee_utils.py      # Shared fee parser utility
 │   │   ├── cart/
-│   │   │   └── router.py       # /cart/, /cart/add, /cart/{id}, /cart/compare/totals
-│   │   ├── database.py         # SQLAlchemy engine + session
-│   │   ├── models.py           # User, CartItem, PriceSnapshot ORM models
-│   │   ├── schemas.py          # Pydantic request/response schemas
-│   │   └── main.py             # FastAPI app + CORS + router registration
+│   │   │   └── router.py         # Cart CRUD + /cart/compare
+│   │   ├── auth.py               # Keycloak JWT verification
+│   │   ├── database.py           # SQLAlchemy engine + session
+│   │   ├── models.py             # User, CartItem, PriceSnapshot, PlatformSession
+│   │   └── main.py               # FastAPI app, CORS, /compare endpoint
+│   ├── sessions/                 # Playwright auth cookies (gitignored)
+│   │   ├── blinkit_auth.json
+│   │   ├── swiggy_auth.json
+│   │   └── zepto_auth.json
+│   ├── generate_blinkit_session.py
+│   ├── generate_swiggy_session.py
+│   ├── generate_zepto_session.py
 │   └── requirements.txt
-└── frontend/
-    ├── index.html              # Auth modals + search + cart sidebar
-    ├── style.css               # Glassmorphic dark UI
-    └── app.js                  # Auth flow + search + cart logic
+├── frontend-react/               # React + Vite frontend
+│   └── src/
+│       ├── App.jsx               # Main UI: search, results, cart panel
+│       ├── App.css               # Dark glassmorphic theme
+│       └── services/api.js       # API client functions
+└── README.md
 ```
 
 ---
 
-## Setup
+## 🚀 Getting Started
 
 ### 1. Install dependencies
 
 ```bash
-cd delivery-bot
+git clone https://github.com/akapoor30/bot-mart.git
+cd bot-mart
+
 python3 -m venv venv
 source venv/bin/activate
-pip install -r requirements.txt
-playwright install
+pip install -r delivery-bot/requirements.txt
+playwright install chromium
 ```
 
-### 2. Start the API
+### 2. Set up environment variables
+
+Create `delivery-bot/.env`:
+
+```env
+KEYCLOAK_URL=http://localhost:8080/realms/bot-mart
+DATABASE_URL=sqlite:///./botmart.db
+```
+
+### 3. Generate authenticated sessions
+
+Scrapers need saved login sessions to bypass bot protection and add items to cart (for fee scraping).
 
 ```bash
+cd delivery-bot
+
+# Blinkit — opens Chrome, set your pincode, press Enter
+python generate_blinkit_session.py
+
+# Swiggy Instamart — opens Chrome, log in via OTP + set location, press Enter
+python generate_swiggy_session.py
+
+# Zepto — opens Chrome, log in via OTP + set location, press Enter
+python generate_zepto_session.py
+```
+
+Sessions are saved to `sessions/` and are gitignored.
+
+### 4. Start the backend API
+
+```bash
+cd delivery-bot
 uvicorn app.main:app --reload
 ```
 
-The DB (`botmart.db`) is created automatically on first run.
+API runs at `http://127.0.0.1:8000`.
 
-### 3. Open the frontend
+### 5. Start the React frontend
 
-Open `frontend/index.html` in your browser.
-
----
-
-## API Endpoints
-
-### Auth
-| Method | Endpoint | Auth Required | Description |
-|--------|----------|---------------|-------------|
-| POST | `/auth/register` | ❌ | Create account |
-| POST | `/auth/login` | ❌ | Login, get tokens |
-| POST | `/auth/refresh` | ❌ | Refresh access token |
-| GET | `/auth/me` | ✅ | Get current user |
-
-### Compare
-| Method | Endpoint | Auth Required | Description |
-|--------|----------|---------------|-------------|
-| GET | `/compare?item=X&pincode=Y` | ✅ | Compare prices across platforms |
-
-### Cart
-| Method | Endpoint | Auth Required | Description |
-|--------|----------|---------------|-------------|
-| GET | `/cart/` | ✅ | Get all cart items |
-| POST | `/cart/add` | ✅ | Add item (auto-fetches prices) |
-| DELETE | `/cart/{id}` | ✅ | Remove one item |
-| DELETE | `/cart/` | ✅ | Clear cart |
-| GET | `/cart/compare/totals` | ✅ | Compare full cart total by platform |
-
----
-
-## Cart Comparison Logic
-
-When you call `GET /cart/compare/totals`, the API:
-
-1. Fetches all your cart items and their saved price snapshots
-2. For each platform (Blinkit, Zepto, Instamart):
-   - Sums all item prices × quantities
-   - Adds delivery/handling/platform fees **once** (as a single order)
-3. Returns sorted results (cheapest first) + how much you save vs the most expensive option
-
----
-
-## Connecting Your Scrapers
-
-In `app/cart/router.py`, the `fetch_prices()` function calls your existing `/compare` endpoint.
-In `app/main.py`, replace the stub in `/compare` with your actual scraper calls:
-
-```python
-from app.scraper.blinkit import scrape_blinkit
-from app.scraper.zepto import scrape_zepto
-from app.scraper.instamart import scrape_instamart
-
-results = await asyncio.gather(
-    scrape_blinkit(item, pincode),
-    scrape_zepto(item, pincode),
-    scrape_instamart(item, pincode),
-    return_exceptions=True
-)
+```bash
+cd delivery-bot/frontend-react
+npm install
+npm run dev
 ```
 
-Make sure each scraper returns a dict with these keys:
-```python
+Frontend runs at `http://localhost:5173`. Log in with your Keycloak account to use the app.
+
+---
+
+## 🔌 API Endpoints
+
+### Core
+
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| GET | `/` | ❌ | Health check |
+| GET | `/api/me` | ✅ | Sync Keycloak user to local DB |
+| GET | `/compare?item=X&pincode=Y` | ✅ | Run all 3 scrapers, return prices + fees |
+
+### Cart
+
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| GET | `/cart/` | ✅ | List cart items |
+| POST | `/cart/add` | ✅ | Add item `{ search_query, quantity }` |
+| DELETE | `/cart/{id}` | ✅ | Remove one item |
+| DELETE | `/cart/` | ✅ | Clear entire cart |
+| GET | `/cart/compare?pincode=Y` | ✅ | Compare full cart total across platforms |
+
+### Sample `/compare` response
+
+```json
 {
-    "platform": "Blinkit",
-    "price": 68.0,           # item price
-    "delivery_fee": 0.0,
-    "handling_fee": 4.0,
-    "platform_fee": 3.0,
-    "surge_fee": 0.0,
-    "delivery_time": "8 min"
+  "query": "Maggi",
+  "pincode": "560095",
+  "cheapest_option": { "store": "Blinkit", "name": "Maggi Double Masala", "price": 20 },
+  "all_results": [
+    { "store": "Blinkit",   "price": 20, "delivery_fee": 0, "handling_fee": 4, "platform_fee": 0, "status": "success" },
+    { "store": "Zepto",     "price": 50, "delivery_fee": 0, "handling_fee": 4, "platform_fee": 5, "status": "success" },
+    { "store": "Instamart", "price": 60, "delivery_fee": 40, "handling_fee": 5, "platform_fee": 5, "status": "success" }
+  ]
+}
+```
+
+### Sample `/cart/compare` response
+
+```json
+{
+  "cheapest_platform": "blinkit",
+  "you_save": 24,
+  "comparison": [
+    { "platform": "blinkit",   "item_total": 95, "delivery_fee": 0, "handling_fee": 4, "grand_total": 99,  "complete_order": true },
+    { "platform": "zepto",     "item_total": 74, "delivery_fee": 0, "handling_fee": 4, "grand_total": 83,  "complete_order": true },
+    { "platform": "instamart", "item_total": 98, "delivery_fee": 40, "handling_fee": 5, "grand_total": 143, "complete_order": true }
+  ]
 }
 ```
 
 ---
 
-## Production Checklist
+## 🏗️ How Fee Scraping Works
 
-- [ ] Replace `SECRET_KEY` in `auth/utils.py` with an env variable
-- [ ] Switch SQLite → PostgreSQL (`DATABASE_URL` in `database.py`)
-- [ ] Set `allow_origins` in CORS to your actual frontend domain
-- [ ] Run behind HTTPS (use nginx + certbot or a managed host)
+Each scraper follows this flow:
+
+1. Search for the product → extract price
+2. Click **ADD** on the matched product card
+3. Navigate to the platform's checkout page
+4. Scrape the bill details section (delivery fee, handling fee, platform fee)
+5. Remove the item from cart (cleanup)
+6. Return the full result including real fees
+
+Fee scraping is **non-fatal** — if it fails for any reason, the scraper returns successfully with fees defaulting to `0`.
+
+---
+
+## 🛡️ Anti-Bot Strategy
+
+| Platform | Method |
+|----------|--------|
+| Blinkit | Headed Chrome (`channel="chrome"`) + saved session cookies |
+| Zepto | Headless Chromium + `playwright-stealth` + saved session cookies |
+| Instamart | Headed Chrome + saved session + auto-dismiss "Try Again" error boundary |
+
+---
+
+## 🗄️ Database Models
+
+- **`User`** — synced from Keycloak on first login
+- **`CartItem`** — per-user cart rows with `search_query` and quantity
+- **`PriceSnapshot`** — cached price + fee data per platform per search query
+- **`PlatformSession`** — (reserved) per-user Playwright session storage
+
+---
+
+## 📋 Roadmap
+
+- [x] Blinkit scraper
+- [x] Zepto scraper
+- [x] Instamart scraper
+- [x] FastAPI `/compare` endpoint
+- [x] Keycloak JWT auth
+- [x] Cart API with price snapshots
+- [x] Cart total comparison across platforms
+- [x] Real fee scraping from checkout pages
+- [x] React frontend with cart panel
+- [ ] Add-to-cart automation (click ADD on the winning platform)
+- [ ] Price history & alerts
