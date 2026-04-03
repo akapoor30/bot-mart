@@ -45,7 +45,8 @@ class CartItem(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
-    product_name = Column(String, nullable=False)
+    search_query = Column(String, nullable=False)
+    product_name = Column(String, nullable=True)
     quantity = Column(Integer, default=1)
     
     # Preferred platform if selected, else null for "any"
@@ -59,6 +60,7 @@ class PriceSnapshot(Base):
     __tablename__ = "price_snapshots"
 
     id = Column(Integer, primary_key=True, index=True)
+    search_query = Column(String, index=True, nullable=False)
     product_name = Column(String, index=True, nullable=False)
     platform = Column(Enum(PlatformName), nullable=False)
     pincode = Column(String, nullable=False)
@@ -68,6 +70,7 @@ class PriceSnapshot(Base):
     delivery_fee = Column(Integer, default=0)
     handling_fee = Column(Integer, default=0)
     platform_fee = Column(Integer, default=0)
+    gst_fee = Column(Integer, default=0)
     
     # Metadata
     in_stock = Column(Integer, default=1) # 1 for True, 0 for False

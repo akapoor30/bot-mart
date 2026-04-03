@@ -82,15 +82,38 @@ class ZeptoScraper(BaseScraper):
 
                 if has_session:
                     try:
-                        # Use Playwright native click (not JS) — Zepto is a React app,
-                        # JS el.click() doesn't trigger synthetic events
-                        add_btn = matched_link.locator("button").first
-                        if await add_btn.count() > 0:
-                            await add_btn.click()
-                        else:
-                            # Fallback to JS if no button found
-                            await matched_link.evaluate("el => { const b = el.querySelector('button'); if (b) b.click(); }")
-                        await page.wait_for_timeout(3000)
+                        # ── Step 0: Close any auto-opened cart drawer ──────────────────────────
+                        # If the cart has leftover items from a previous run, Zepto auto-opens
+                        # the Vaul drawer on page load. Close it with Escape BEFORE clicking ADD,
+                        # to avoid the overlay blocking native Playwright pointer events.
+                        await page.keyboard.press("Escape")
+                        await page.wait_for_timeout(800)
+
+                        # ── Step 1: Add item via JS dispatchEvent ──────────────────────────────
+                        # dispatchEvent(MouseEvent) triggers React synthetic events and bypasses
+                        # any overlay that might still be present after the Escape above.
+                        matched_href = await matched_link.get_attribute("href")
+                        added = await page.evaluate('''(href) => {
+                            const links = document.querySelectorAll('a[href*="/pn/"]');
+                            for (const link of links) {
+                                if (link.getAttribute("href") === href) {
+                                    const btn = link.querySelector("button");
+                                    if (btn) {
+                                        btn.dispatchEvent(new MouseEvent("click", {bubbles: true, cancelable: true, view: window}));
+                                        return "dispatched";
+                                    }
+                                }
+                            }
+                            return "not-found";
+                        }''', matched_href)
+                        print(f"Zepto ADD dispatch result: {added}")
+
+                        if added != "dispatched":
+                            # Fallback: native click with a short timeout so we don't hang 30s
+                            add_btn_el = await matched_link.query_selector("button")
+                            if add_btn_el:
+                                await add_btn_el.click(timeout=5000)
+
                         
                         # Zepto opens cart as a sidebar via ?cart=open on the CURRENT search page
                         # (navigating to /cart gives a 404 "egg-sit" error page)
@@ -98,20 +121,30 @@ class ZeptoScraper(BaseScraper):
                         await page.goto(search_url, wait_until="domcontentloaded", timeout=20000)
                         await page.wait_for_timeout(3000)
                         
-                        # Scrape the "Bill summary" section from the cart sidebar
+                        # Scrape the "Bill summary" section — pick the SMALLEST container
+                        # with the bill heading + fee keywords (avoids hard size limits)
                         bill_text = await page.evaluate('''() => {
-                            const all = document.querySelectorAll("div, section");
+                            const all = Array.from(document.querySelectorAll("div, section"));
+                            let best = null;
+                            // Pass 1: smallest with Bill summary heading + fee keyword
                             for (const el of all) {
-                                const t = el.innerText || "";
-                                // Zepto uses "Bill summary" as the heading
-                                if (t.includes("Bill summary") && t.includes("Fee") && t.length < 1500) return t;
+                                const t = (el.innerText || "").trim();
+                                const hasHeading = t.includes("Bill summary") || t.includes("Bill Summary");
+                                const hasFee = t.includes("Fee") || t.includes("Delivery");
+                                if (hasHeading && hasFee && t.length > 20) {
+                                    if (!best || t.length < best.length) best = t;
+                                }
                             }
-                            // Fallback: find any section with fee labels
+                            if (best) return best;
+                            // Pass 2: smallest with both Delivery Fee and Handling Fee
                             for (const el of all) {
-                                const t = el.innerText || "";
-                                if ((t.includes("Delivery Fee") || t.includes("Handling Fee")) && t.length < 800) return t;
+                                const t = (el.innerText || "").trim();
+                                if ((t.includes("Delivery Fee") || t.includes("Handling Fee")) && t.length > 20) {
+                                    if (!best || t.length < best.length) best = t;
+                                }
                             }
-                            return "";
+                            if (best) return best;
+                            return document.body.innerText || "";
                         }''')
                         
                         if bill_text:
@@ -120,13 +153,40 @@ class ZeptoScraper(BaseScraper):
                         else:
                             print("Zepto: Bill summary not found in cart sidebar")
                         
-                        # Clear cart: remove the added item
-                        minus_btn = await page.query_selector(
-                            'button[aria-label*="decrease" i], button[aria-label*="remove" i], '
-                            'button[class*="decrement" i], button[class*="remove" i]'
+                        # ── Step 3: Clean up cart ─────────────────────────────────────────────
+                        # Navigate away from ?cart=open first to dismiss the Vaul drawer.
+                        # On the search page (without cart=open), Zepto shows quantity controls
+                        # (−/+) directly on the product card. We can JS-click the − button there.
+                        await page.goto(
+                            f"https://www.zeptonow.com/search?query={product_name}",
+                            wait_until="domcontentloaded", timeout=15000
                         )
-                        if minus_btn:
-                            await minus_btn.click()
+                        await page.wait_for_timeout(2000)
+                        await page.keyboard.press("Escape")  # close drawer if re-opened
+                        await page.wait_for_timeout(500)
+
+                        removed = await page.evaluate('''() => {
+                            // On search page, quantity chips show "−" button on each added item
+                            const allBtns = document.querySelectorAll("button");
+                            for (const btn of allBtns) {
+                                const t = (btn.textContent || btn.innerText || "").trim();
+                                if (t === "-" || t === "\u2212") {
+                                    btn.dispatchEvent(new MouseEvent("click", {bubbles: true, cancelable: true, view: window}));
+                                    return true;
+                                }
+                            }
+                            // Also try aria-label approach
+                            const labeled = document.querySelector(
+                                '[aria-label*="decrease" i], [aria-label*="remove" i], [aria-label*="minus" i]'
+                            );
+                            if (labeled) {
+                                labeled.dispatchEvent(new MouseEvent("click", {bubbles: true, cancelable: true, view: window}));
+                                return true;
+                            }
+                            return false;
+                        }''')
+                        print(f"Zepto cart cleanup: {removed}")
+                        if removed:
                             await page.wait_for_timeout(1000)
 
                     except Exception as fee_err:

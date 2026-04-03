@@ -111,7 +111,7 @@ async def compare_cart_totals(
 
     platform_totals = {p.value: {
         "item_total": 0, "delivery_fee": 0, "handling_fee": 0,
-        "platform_fee": 0, "items_found": [], "items_missing": []
+        "platform_fee": 0, "gst_fee": 0, "items_found": [], "items_missing": []
     } for p in PlatformName}
 
     for cart_item in cart_items:
@@ -130,6 +130,7 @@ async def compare_cart_totals(
                 platform_totals[pname]["delivery_fee"] = max(platform_totals[pname]["delivery_fee"], snapshot.delivery_fee)
                 platform_totals[pname]["handling_fee"] = max(platform_totals[pname]["handling_fee"], snapshot.handling_fee)
                 platform_totals[pname]["platform_fee"] = max(platform_totals[pname]["platform_fee"], snapshot.platform_fee)
+                platform_totals[pname]["gst_fee"] = max(platform_totals[pname]["gst_fee"], snapshot.gst_fee or 0)
                 platform_totals[pname]["items_found"].append({
                     "query": cart_item.search_query,
                     "product": snapshot.product_name,
@@ -140,13 +141,14 @@ async def compare_cart_totals(
 
     results = []
     for pname, data in platform_totals.items():
-        grand_total = data["item_total"] + data["delivery_fee"] + data["handling_fee"] + data["platform_fee"]
+        grand_total = data["item_total"] + data["delivery_fee"] + data["handling_fee"] + data["platform_fee"] + data["gst_fee"]
         results.append({
             "platform": pname,
             "item_total": data["item_total"],
             "delivery_fee": data["delivery_fee"],
             "handling_fee": data["handling_fee"],
             "platform_fee": data["platform_fee"],
+            "gst_fee": data["gst_fee"],
             "grand_total": grand_total,
             "items_found": data["items_found"],
             "items_missing": data["items_missing"],

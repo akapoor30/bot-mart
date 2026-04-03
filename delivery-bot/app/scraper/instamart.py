@@ -15,7 +15,7 @@ class InstamartScraper(BaseScraper):
                 channel="chrome",
                 args=[
                     '--disable-blink-features=AutomationControlled',
-                    '--window-position=-3000,0',   # Move off-screen so user doesn't see it
+                    '--window-position=-5001,0',   # Unique to Instamart — used for targeted pkill
                     '--window-size=1280,900',
                 ]
             )
@@ -33,11 +33,10 @@ class InstamartScraper(BaseScraper):
                 )
                 
             page = await context.new_page()
-            # Do not use Stealth with headed Chrome, it can cause detection
             
             try:
                 # 1. Navigate to Instamart (Location is already set from session)
-                await page.goto("https://www.swiggy.com/instamart", wait_until="networkidle", timeout=30000)
+                await page.goto("https://www.swiggy.com/instamart", wait_until="domcontentloaded", timeout=30000)
                 await page.wait_for_timeout(3000)
                 
                 # Check for location prompt just in case it wasn't saved perfectly
@@ -236,40 +235,43 @@ class InstamartScraper(BaseScraper):
                                 await matched_btn.click()
                                 await page.wait_for_timeout(3000)
                                 await page.goto("https://www.swiggy.com/instamart/cart", wait_until="domcontentloaded", timeout=20000)
-                                await page.wait_for_timeout(3000)
-                                # Click "View Detailed Bill" to expand full fee breakdown
-                                view_bill = page.get_by_text("View Detailed Bill")
-                                if await view_bill.count() > 0:
-                                    await view_bill.first.click()
-                                    await page.wait_for_timeout(1500)
-                                # JS: find the BILL DETAILS section by its heading
-                                # Instamart uses: "Delivery Partner Fee", "Handling Fee", "Late Night Fee"
+                                await page.wait_for_timeout(4000)
+                                # JS: find the BILL DETAILS section — pick the SMALLEST container
+                                # that has the fee keywords. Avoids the < 2000 char limit that
+                                # always rejected Instamart's large React wrappers.
                                 bill_text = await page.evaluate('''() => {
-                                    const all = document.querySelectorAll("div, section");
+                                    const all = Array.from(document.querySelectorAll("div, section"));
+                                    let best = null;
+                                    // Pass 1: container with BILL DETAILS heading + fee line
                                     for (const el of all) {
-                                        const t = el.innerText || "";
-                                        if ((t.includes("BILL DETAILS") || t.toUpperCase().includes("BILL DETAILS"))
-                                            && t.includes("Fee") && t.length < 2000) return t;
+                                        const t = (el.innerText || "").trim();
+                                        const hasHeading = t.toUpperCase().includes("BILL DETAILS") || t.toUpperCase().includes("BILL SUMMARY");
+                                        const hasFee = t.includes("Handling") || t.includes("Delivery") || t.includes("Fee");
+                                        if (hasHeading && hasFee && t.length > 30) {
+                                            if (!best || t.length < best.length) best = t;
+                                        }
                                     }
-                                    // Fallback: element with Handling Fee + no product quantity text
+                                    if (best) return best;
+                                    // Pass 2: container with Handling Fee AND Delivery/GST
                                     for (const el of all) {
-                                        const t = el.innerText || "";
-                                        if (t.includes("Handling Fee") && t.includes("Fee")
-                                            && t.length < 1000 && !t.includes("quantity")) return t;
+                                        const t = (el.innerText || "").trim();
+                                        if (t.includes("Handling Fee") && (t.includes("Delivery") || t.includes("GST"))) {
+                                            if (!best || t.length < best.length) best = t;
+                                        }
                                     }
-                                    return "";
+                                    if (best) return best;
+                                    // Fallback: full page body (parse_fees_from_text filters noise)
+                                    return document.body.innerText || "";
                                 }''')
                                 if bill_text:
                                     fees = parse_fees_from_text(bill_text)
                                     print(f"Instamart fees scraped (fallback): {fees}")
                                 else:
                                     print("Instamart: Fee section not found on cart page")
-                                # Clear cart: go back and click — button
-                                await page.go_back()
-                                await page.wait_for_timeout(2000)
-                                minus = page.locator('div[aria-label="Remove item from cart"], button:has-text("\u2212")')
-                                if await minus.count() > 0:
-                                    await minus.first.click()
+                                # Skip cart cleanup here — any JS click on a cart item
+                                # triggers a Swiggy network request that blocks browser.close().
+                                # Cart is reset at the top of each session instead.
+                                pass
                             except Exception as fee_err:
                                 print(f"Instamart fee scraping failed (non-fatal): {fee_err}")
 
@@ -349,38 +351,40 @@ class InstamartScraper(BaseScraper):
                                 await add_btn.first.click()
                                 await page.wait_for_timeout(3000)
                                 await page.goto("https://www.swiggy.com/instamart/cart", wait_until="domcontentloaded", timeout=20000)
-                                await page.wait_for_timeout(3000)
-                                # Click "View Detailed Bill" to expand full fee breakdown
-                                view_bill = page.get_by_text("View Detailed Bill")
-                                if await view_bill.count() > 0:
-                                    await view_bill.first.click()
-                                    await page.wait_for_timeout(1500)
-                                # JS: find the BILL DETAILS section (Instamart uses capitalised heading)
+                                await page.wait_for_timeout(4000)
+                                # JS: find the BILL DETAILS section — pick the SMALLEST container
                                 bill_text = await page.evaluate('''() => {
-                                    const all = document.querySelectorAll("div, section");
+                                    const all = Array.from(document.querySelectorAll("div, section"));
+                                    let best = null;
+                                    // Pass 1: container with BILL DETAILS heading + fee line
                                     for (const el of all) {
-                                        const t = el.innerText || "";
-                                        if ((t.includes("BILL DETAILS") || t.toUpperCase().includes("BILL DETAILS"))
-                                            && t.includes("Fee") && t.length < 2000) return t;
+                                        const t = (el.innerText || "").trim();
+                                        const hasHeading = t.toUpperCase().includes("BILL DETAILS") || t.toUpperCase().includes("BILL SUMMARY");
+                                        const hasFee = t.includes("Handling") || t.includes("Delivery") || t.includes("Fee");
+                                        if (hasHeading && hasFee && t.length > 30) {
+                                            if (!best || t.length < best.length) best = t;
+                                        }
                                     }
+                                    if (best) return best;
+                                    // Pass 2: container with Handling Fee AND Delivery/GST
                                     for (const el of all) {
-                                        const t = el.innerText || "";
-                                        if (t.includes("Handling Fee") && t.includes("Fee")
-                                            && t.length < 1000 && !t.includes("quantity")) return t;
+                                        const t = (el.innerText || "").trim();
+                                        if (t.includes("Handling Fee") && (t.includes("Delivery") || t.includes("GST"))) {
+                                            if (!best || t.length < best.length) best = t;
+                                        }
                                     }
-                                    return "";
+                                    if (best) return best;
+                                    // Fallback: full page body (parse_fees_from_text filters noise)
+                                    return document.body.innerText || "";
                                 }''')
                                 if bill_text:
                                     fees = parse_fees_from_text(bill_text)
                                     print(f"Instamart fees scraped: {fees}")
                                 else:
                                     print("Instamart: BILL DETAILS section not found")
-                                # Clear cart
-                                await page.go_back()
-                                await page.wait_for_timeout(2000)
-                                minus = page.locator('div[aria-label="Remove item from cart"]')
-                                if await minus.count() > 0:
-                                    await minus.first.click()
+                                # Skip cart cleanup — cleanup click triggers Swiggy network requests
+                                # that block browser.close() in headed Chrome indefinitely.
+                                pass
                         except Exception as fee_err:
                             print(f"Instamart fee scraping failed (non-fatal): {fee_err}")
 
@@ -398,7 +402,24 @@ class InstamartScraper(BaseScraper):
                     return {"store": "Instamart", "status": "failed", "error": "No matching products found"}
 
             except Exception as e:
-                await page.screenshot(path="tmp/instamart_error.png")
+                try:
+                    await page.screenshot(path="tmp/instamart_error.png")
+                except Exception:
+                    pass
                 return {"store": "Instamart", "status": "failed", "error": str(e)}
             finally:
-                await browser.close()
+                # browser.close() on headed Chrome can hang indefinitely when Swiggy has
+                # beforeunload handlers. context.close(run_before_unload=False) is NOT
+                # available in Playwright 1.58 — only 'reason' is a valid param.
+                # Fix: wrap browser.close() with a 5s asyncio timeout; if it still hangs,
+                # force-kill via pkill using the unique --window-position=-3000 launch flag
+                # (only Playwright-launched Instamart Chrome instances have this flag).
+                import subprocess
+                try:
+                    await asyncio.wait_for(browser.close(), timeout=5.0)
+                except Exception:
+                    subprocess.run(
+                        ["pkill", "-9", "-f", "window-position=-5001"],
+                        capture_output=True
+                    )
+                    print("Instamart: force-killed stuck Chrome process")

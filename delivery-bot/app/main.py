@@ -84,14 +84,27 @@ async def compare(
     zepto = ZeptoScraper()
     instamart = InstamartScraper()
     
+    # Wrap each scraper with a timeout so a hung browser never stalls the request forever.
+    # Instamart uses headed Chrome which is slower to close than headless Chromium.
+    async def safe_scrape(coro, store_name: str, timeout: int = 120):
+        try:
+            return await asyncio.wait_for(coro, timeout=timeout)
+        except asyncio.TimeoutError:
+            print(f"[compare] {store_name} timed out after {timeout}s")
+            return {"store": store_name, "status": "failed", "error": f"Timed out after {timeout}s"}
+        except Exception as exc:
+            print(f"[compare] {store_name} raised: {exc}")
+            return {"store": store_name, "status": "failed", "error": str(exc)}
+
     # Run all scrapers in parallel
     tasks = [
-        blinkit.search_product(item, pincode),
-        zepto.search_product(item, pincode),
-        instamart.search_product(item, pincode),
+        safe_scrape(blinkit.search_product(item, pincode), "Blinkit",    timeout=90),
+        safe_scrape(zepto.search_product(item, pincode),   "Zepto",     timeout=90),
+        safe_scrape(instamart.search_product(item, pincode), "Instamart", timeout=120),
     ]
-    
+
     results = await asyncio.gather(*tasks)
+    print(f"[compare] All scrapers done: {[r.get('store') if r else 'None' for r in results]}")
 
     # Save successful results as PriceSnapshots so /cart/compare can read them
     PLATFORM_MAP = {
@@ -99,6 +112,7 @@ async def compare(
         "Zepto": PlatformName.ZEPTO,
         "Instamart": PlatformName.INSTAMART,
     }
+    print("[compare] Saving snapshots to DB...")
     for r in results:
         if r and r.get("status") == "success" and r.get("store") in PLATFORM_MAP:
             platform_enum = PLATFORM_MAP[r["store"]]
@@ -109,18 +123,22 @@ async def compare(
                 PriceSnapshot.pincode == pincode
             ).delete()
             snapshot = PriceSnapshot(
-                search_query=item.lower(),      # The user's original query, e.g. "milk"
-                product_name=r["name"],          # Platform-specific name, e.g. "Amul Taaza Toned Milk"
+                search_query=item.lower(),
+                product_name=r["name"],
                 platform=platform_enum,
                 pincode=pincode,
                 price=r["price"],
                 delivery_fee=r.get("delivery_fee", 0),
                 handling_fee=r.get("handling_fee", 0),
                 platform_fee=r.get("platform_fee", 0),
+                gst_fee=r.get("gst_fee", 0),
                 in_stock=1,
             )
             db.add(snapshot)
+            print(f"[compare] Queued snapshot for {r['store']}")
+    print("[compare] Committing...")
     db.commit()
+    print("[compare] DB commit done.")
 
     # Filter and find cheapest
     valid_results = [r for r in results if r is not None and r.get("status") == "success"]
@@ -131,6 +149,7 @@ async def compare(
         for r in results
     ]
 
+    print("[compare] Returning response.")
     return {
         "user": current_user["email"],
         "query": item,

@@ -184,20 +184,28 @@ async def debug_instamart():
 
             print("5. Extracting 'BILL DETAILS' section via JS...")
             bill_text = await page.evaluate('''() => {
-                const all = document.querySelectorAll("div, section");
-                // Instamart uses capitalised "BILL DETAILS" heading
+                const all = Array.from(document.querySelectorAll("div, section"));
+                let best = null;
+                // Pass 1: smallest element with BILL DETAILS heading + fee keywords
                 for (const el of all) {
-                    const t = el.innerText || "";
-                    if ((t.includes("BILL DETAILS") || t.toUpperCase().includes("BILL DETAILS"))
-                        && t.includes("Fee") && t.length < 2000) return t;
+                    const t = (el.innerText || "").trim();
+                    const hasHeading = t.toUpperCase().includes("BILL DETAILS") || t.toUpperCase().includes("BILL SUMMARY");
+                    const hasFee = t.includes("Handling") || t.includes("Delivery") || t.includes("Fee");
+                    if (hasHeading && hasFee && t.length > 30) {
+                        if (!best || t.length < best.length) best = t;
+                    }
                 }
-                // Fallback: element with Handling Fee, not a product list
+                if (best) return best;
+                // Pass 2: smallest with Handling Fee + Delivery/GST
                 for (const el of all) {
-                    const t = el.innerText || "";
-                    if (t.includes("Handling Fee") && t.length < 1000
-                        && !t.includes("quantity")) return t;
+                    const t = (el.innerText || "").trim();
+                    if (t.includes("Handling Fee") && (t.includes("Delivery") || t.includes("GST"))) {
+                        if (!best || t.length < best.length) best = t;
+                    }
                 }
-                return "FEE SECTION NOT FOUND";
+                if (best) return best;
+                // Fallback: full page body
+                return document.body.innerText || "FEE SECTION NOT FOUND";
             }''')
             print(f"   Bill text:\n{bill_text[:400]}")
             fees = parse_fees_from_text(bill_text)
@@ -242,13 +250,20 @@ async def debug_zepto():
                 await browser.close()
                 return
 
-            print("3. Clicking ADD button via JS...")
-            result = await links[0].evaluate('''el => {
-                const btn = el.querySelector("button");
-                if (btn) { btn.click(); return "clicked: " + btn.textContent.trim(); }
-                return "no button found";
-            }''')
-            print(f"   Result: {result}")
+            print("3. Clicking ADD button (Playwright native click — JS doesn't trigger React)...")
+            first_link = page.locator('a[href*="/pn/"]').first
+            add_btn = first_link.locator("button").first
+            if await add_btn.count() > 0:
+                await add_btn.click()
+                print("   ✅ Clicked ADD via native Playwright click")
+            else:
+                # Fallback to JS
+                result = await links[0].evaluate('''el => {
+                    const btn = el.querySelector("button");
+                    if (btn) { btn.click(); return "js-clicked: " + btn.textContent.trim(); }
+                    return "no button found";
+                }''')
+                print(f"   ⚠️ Fallback JS click: {result}")
             await page.wait_for_timeout(3000)
             await page.screenshot(path="tmp/debug_zepto_after_add.png")
 

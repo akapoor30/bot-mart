@@ -57,5 +57,6 @@ class PriceSnapshot(Base):
     delivery_fee = Column(Integer, default=0)
     handling_fee = Column(Integer, default=0)
     platform_fee = Column(Integer, default=0)
+    gst_fee = Column(Integer, default=0)
     in_stock = Column(Integer, default=1)
     scraped_at = Column(DateTime, default=datetime.utcnow)

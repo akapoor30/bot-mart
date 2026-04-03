@@ -1,4 +1,5 @@
 # app/scraper/blinkit.py
+import asyncio
 import os
 import re
 from playwright.async_api import async_playwright
@@ -14,7 +15,7 @@ class BlinkitScraper(BaseScraper):
                 channel="chrome",
                 args=[
                     '--disable-blink-features=AutomationControlled',
-                    '--window-position=-3000,0',   # Move off-screen so user doesn't see it
+                    '--window-position=-4001,0',   # Unique to Blinkit — used for targeted pkill
                     '--window-size=1280,900',
                 ]
             )
@@ -166,19 +167,8 @@ class BlinkitScraper(BaseScraper):
                     else:
                         print("Blinkit: Bill details section not found in sidebar")
                     
-                    # 8. Remove the item — click the − via JS
-                    await page.wait_for_timeout(500)
-                    await page.evaluate('''() => {
-                        // Find − button in the cart sidebar
-                        const buttons = document.querySelectorAll("button");
-                        for (const btn of buttons) {
-                            if (btn.textContent.trim() === "−" || btn.textContent.trim() === "-") {
-                                btn.click();
-                                return;
-                            }
-                        }
-                    }''')
-                    await page.wait_for_timeout(1000)
+                    # 8. Skip cart cleanup — btn.click() triggers a Blinkit cart API request
+                    # that keeps Chrome alive and blocks browser.close() indefinitely.
                     
                 except Exception as fee_err:
                     print(f"Blinkit fee scraping failed (non-fatal): {fee_err}")
@@ -195,7 +185,21 @@ class BlinkitScraper(BaseScraper):
                 }
 
             except Exception as e:
-                await page.screenshot(path="tmp/blinkit_error.png")
+                try:
+                    await page.screenshot(path="tmp/blinkit_error.png")
+                except Exception:
+                    pass
                 return {"store": "Blinkit", "status": "failed", "error": str(e)}
             finally:
-                await browser.close()
+                # browser.close() on headed Chrome can hang when Blinkit has pending cart
+                # network requests or beforeunload handlers. Wrap with 5s timeout and
+                # force-kill via pkill using --window-position=-4001 (unique to Blinkit).
+                import subprocess
+                try:
+                    await asyncio.wait_for(browser.close(), timeout=5.0)
+                except Exception:
+                    subprocess.run(
+                        ["pkill", "-9", "-f", "window-position=-4001"],
+                        capture_output=True
+                    )
+                    print("Blinkit: force-killed stuck Chrome process")

@@ -171,11 +171,12 @@ function CartPanel({ token, refreshTrigger, pincode }) {
                 </div>
 
                 {/* Extra fees (when scrapers capture them) */}
-                {(c.delivery_fee > 0 || c.handling_fee > 0 || c.platform_fee > 0) && (
+                {(c.delivery_fee > 0 || c.handling_fee > 0 || c.platform_fee > 0 || c.gst_fee > 0) && (
                   <div className="comp-fees">
                     {c.delivery_fee > 0 && <span>Delivery: ₹{c.delivery_fee}</span>}
                     {c.handling_fee > 0 && <span>Handling: ₹{c.handling_fee}</span>}
                     {c.platform_fee > 0 && <span>Platform: ₹{c.platform_fee}</span>}
+                    {c.gst_fee > 0 && <span>GST: ₹{c.gst_fee}</span>}
                   </div>
                 )}
 

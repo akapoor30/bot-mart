@@ -32,31 +32,31 @@ _SKIP_PATTERNS = [
     "you saved",
     "get free delivery",
     "free delivery above",
+    "orders above",       # "No small cart fee on orders above ₹99" (Instamart)
+    "to avail",           # "Add items worth ₹185 to avail your Swiggy One Free Delivery"
+    "no small cart",      # "No small cart fee on orders above ₹99"
+    "minimum order",      # generic hint about minimum order amounts
+    "worth ₹",            # any "worth ₹X" hint line not caught above
 ]
-
-# Fee label keyword groups
-_FEE_LABELS = {
-    # (keyword_list, fee_key, additive?)
-    "delivery":   ("delivery_fee",  False),  # "Delivery charge/fee/Partner Fee"
-    "late night": ("delivery_fee",  True),   # Late night surcharge adds to delivery
-    "handling":   ("handling_fee",  False),
-    "platform fee": ("platform_fee", False),
-    "convenience": ("platform_fee", False),
-    "small cart":  ("platform_fee", True),
-    "small order": ("platform_fee", True),
-    "gst":         ("platform_fee", True),   # GST and Charges → platform_fee
-}
 
 
 def _get_actual_amount(lines: list, i: int) -> int:
     """
     Get the ACTUAL (discounted) price for a fee label at line i.
-    When a fee has a crossed-out price and a real price (e.g. ₹12.76 ₹11.56),
-    they appear as two consecutive ₹-amount lines. We want the LAST one.
-    Also handles FREE badges on their own line.
-    Stops at hint/skip lines to avoid grabbing e.g. '₹107' from
-    'Add items worth ₹107 to avoid late night fee'.
+
+    Handles three layouts:
+      1. Amount on the SAME line as the label: "Small Cart Fee₹20.00"
+      2. Amount on the NEXT line(s): "Handling Fee\\n₹12.76 ₹11.56"  -> last = 11
+      3. FREE badge: returns 0
+
+    Stops at hint/skip lines (e.g. 'No small cart fee on orders above ₹99')
+    so we don't grab the hint's ₹ value instead of the real fee amount.
     """
+    label_line = lines[i] if i < len(lines) else ""
+
+    # Collect any inline ₹ amounts on the label line itself (used as fallback below)
+    inline_amounts = re.findall(r"₹\s*([\d,]+)", label_line)
+
     amounts = []
     has_free = False
     j = i + 1
@@ -65,14 +65,23 @@ def _get_actual_amount(lines: list, i: int) -> int:
         if not t:
             j += 1
             continue
-        # Stop if this is a hint/informational line
         tl = t.lower()
+
+        # Stop if this is a known hint/informational line
         if any(pat in tl for pat in _SKIP_PATTERNS):
             break
+
+        # A line that STARTS WITH LETTERS and also contains ₹ mid-sentence is a prose hint.
+        # e.g. "No small cart fee on orders above ₹99"
+        # Pure amount lines look like "₹20.00" or "₹12.76 ₹11.56"
+        if "₹" in t and re.match(r"[A-Za-z]", t):
+            break  # This is a hint sentence, stop before we grab its ₹ amount
+
         if "FREE" in t.upper():
             has_free = True
             j += 1
             continue
+
         m = re.search(r"₹\s*([\d,]+)", t)
         if m:
             amounts.append(int(m.group(1).replace(",", "")))
@@ -84,18 +93,24 @@ def _get_actual_amount(lines: list, i: int) -> int:
         return 0
     if amounts:
         return amounts[-1]  # last value = discounted/actual price
+
+    # Fallback: use the inline amount from the label line itself (e.g. "Small Cart Fee₹20.00")
+    if inline_amounts:
+        return int(inline_amounts[-1].replace(",", ""))
+
     return 0
 
 
 def parse_fees_from_text(page_text: str) -> dict:
     """
     Scan the raw innerText of a cart/checkout page and pull out the key fees.
-    Returns a dict: {delivery_fee, handling_fee, platform_fee} (int, default 0).
+    Returns a dict: {delivery_fee, handling_fee, platform_fee, gst_fee} (int, default 0).
 
     Handles all platforms:
       - Blinkit:   "Delivery charge", "Handling charge", "Small cart charge"
       - Zepto:     "Delivery Fee", "Handling Fee", "Late Night Fee"
-      - Instamart: "Delivery Partner Fee" (FREE), "Handling Fee", "Late Night Fee", "GST and Charges"
+      - Instamart: "one Delivery Partner Fee", "Handling Fee", "Small Cart Fee",
+                   "Late Night Fee", "GST and Charges"
     """
     fees = {"delivery_fee": 0, "handling_fee": 0, "platform_fee": 0, "gst_fee": 0}
     lines = [l.strip() for l in page_text.split("\n") if l.strip()]
@@ -112,6 +127,10 @@ def parse_fees_from_text(page_text: str) -> dict:
         additive = False
 
         if "late night" in low and "fee" in low:
+            fee_key, additive = "delivery_fee", True   # Late night surcharge adds to delivery
+        elif "rain" in low and "fee" in low:
+            fee_key, additive = "delivery_fee", True   # Rain/surge fee
+        elif "surge" in low and "fee" in low:
             fee_key, additive = "delivery_fee", True
         elif "delivery" in low and ("fee" in low or "charge" in low or "partner" in low):
             fee_key, additive = "delivery_fee", False
@@ -120,14 +139,14 @@ def parse_fees_from_text(page_text: str) -> dict:
         elif "platform fee" in low or "convenience" in low:
             fee_key, additive = "platform_fee", False
         elif "small cart" in low or "small order" in low:
-            fee_key, additive = "platform_fee", True
+            fee_key, additive = "platform_fee", True   # Small Cart Fee adds to platform
         elif "gst" in low:
-            fee_key, additive = "gst_fee", True
+            fee_key, additive = "gst_fee", True        # GST and Charges -> its own column
 
         if fee_key is None:
             continue
 
-        # Get the actual amount (handles crossed-out prices + FREE badges)
+        # Get the actual amount (handles crossed-out prices, FREE badges, inline amounts)
         amount = _get_actual_amount(lines, i)
 
         if additive:
