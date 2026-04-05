@@ -24,11 +24,11 @@ export const getCart = async (token) => {
   return res.json();
 };
 
-export const addToCart = async (search_query, quantity = 1, token) => {
+export const addToCart = async (search_query, quantity = 1, token, chosen_product_name = null, chosen_platform = null) => {
   const res = await fetch(`${BASE}/cart/add`, {
     method: 'POST',
     headers: authHeaders(token),
-    body: JSON.stringify({ search_query, quantity }),
+    body: JSON.stringify({ search_query, quantity, chosen_product_name, chosen_platform }),
   });
   if (!res.ok) throw new Error('Failed to add to cart');
   return res.json();

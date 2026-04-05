@@ -8,9 +8,13 @@ from pydantic import BaseModel
 
 router = APIRouter(prefix="/cart", tags=["cart"])
 
+from typing import Optional
+
 class AddItemRequest(BaseModel):
     search_query: str   # The original user query, e.g. "milk"
     quantity: int = 1
+    chosen_product_name: Optional[str] = None
+    chosen_platform: Optional[str] = None
 
 
 # ── Fee threshold rules ───────────────────────────────────────────────────────
@@ -89,7 +93,13 @@ async def list_cart(
     return {
         "user": current_user["email"],
         "cart": [
-            {"id": i.id, "search_query": i.search_query, "product_name": i.product_name, "quantity": i.quantity}
+            {
+                "id": i.id, 
+                "search_query": i.search_query, 
+                "product_name": i.product_name, 
+                "quantity": i.quantity,
+                "preferred_platform": i.preferred_platform.value if i.preferred_platform else None
+            }
             for i in items
         ]
     }
@@ -112,12 +122,33 @@ async def add_to_cart(
         CartItem.search_query == query
     ).first()
     if existing:
-        existing.quantity += body.quantity
+        new_quantity = existing.quantity + body.quantity
+        if new_quantity <= 0:
+            db.delete(existing)
+            db.commit()
+            return {"message": "Item removed from cart.", "item": None}
+            
+        existing.quantity = new_quantity
+        if body.chosen_product_name:
+            existing.product_name = body.chosen_product_name
+        if body.chosen_platform:
+            existing.preferred_platform = PlatformName(body.chosen_platform)
+            
         db.commit()
         db.refresh(existing)
         return {"message": "Quantity updated", "item": {"id": existing.id, "search_query": existing.search_query, "quantity": existing.quantity}}
 
-    item = CartItem(user_id=user.id, search_query=query, product_name=None, quantity=body.quantity)
+    if body.quantity <= 0:
+        raise HTTPException(status_code=400, detail="Quantity must be positive.")
+
+    pref_plat = PlatformName(body.chosen_platform) if body.chosen_platform else None
+    item = CartItem(
+        user_id=user.id, 
+        search_query=query, 
+        product_name=body.chosen_product_name, 
+        preferred_platform=pref_plat,
+        quantity=body.quantity
+    )
     db.add(item)
     db.commit()
     db.refresh(item)
@@ -211,6 +242,8 @@ async def compare_cart_totals(
                     "query":   cart_item.search_query,
                     "product": snapshot.product_name,
                     "price":   snapshot.price,
+                    "quantity": cart_item.quantity,
+                    "total_cost": cost,
                 })
             else:
                 platform_totals[pname]["items_missing"].append(cart_item.search_query)

@@ -53,19 +53,20 @@ function FeeRow({ label, value }) {
 }
 
 // ── Single result card ───────────────────────────────────────────────────────
-function ResultCard({ item, isCheapestTotal, token, searchQuery, onAddedToCart }) {
-  const [adding, setAdding] = useState(false);
-  const [added, setAdded]   = useState(false);
+function ResultCard({ item, isCheapestTotal, token, searchQuery, cart, refreshCart }) {
+  const [updating, setUpdating] = useState(false);
 
-  const handleAdd = async () => {
-    setAdding(true);
+  // find in cart
+  const cartItem = cart.find(c => c.search_query.toLowerCase() === searchQuery.toLowerCase());
+  const quantity = cartItem ? cartItem.quantity : 0;
+
+  const handleUpdate = async (delta) => {
+    setUpdating(true);
     try {
-      await addToCart(searchQuery, 1, token);
-      setAdded(true);
-      onAddedToCart();
-      setTimeout(() => setAdded(false), 2000);
+      await addToCart(searchQuery, delta, token, item.name, item.store.toLowerCase());
+      await refreshCart();
     } catch (e) { console.error(e); }
-    finally { setAdding(false); }
+    finally { setUpdating(false); }
   };
 
   if (item.status !== 'success') {
@@ -85,16 +86,13 @@ function ResultCard({ item, isCheapestTotal, token, searchQuery, onAddedToCart }
 
   return (
     <div className={`result-card ${isCheapestTotal ? 'cheapest' : ''} ${isMismatch ? 'mismatched' : ''}`}>
-      {/* Store badges row */}
       <div className="card-badges">
         <StoreBadge store={item.store} cheapest={isCheapestTotal} />
         {isMismatch && <MismatchBadge reason={item.ai_mismatch_reason} />}
       </div>
 
-      {/* Product name */}
       <p className="card-name">{item.name}</p>
 
-      {/* Price breakdown */}
       <div className="card-price-block">
         <div className="card-total-price">
           <span className="total-label">Total</span>
@@ -103,7 +101,6 @@ function ResultCard({ item, isCheapestTotal, token, searchQuery, onAddedToCart }
         <div className="card-item-price">Item ₹{item.price}</div>
       </div>
 
-      {/* Fee details (collapsible feel) */}
       {(item.delivery_fee > 0 || item.handling_fee > 0 || item.platform_fee > 0 || item.gst_fee > 0) && (
         <div className="card-fees">
           <FeeRow label="Delivery"  value={item.delivery_fee} />
@@ -113,45 +110,46 @@ function ResultCard({ item, isCheapestTotal, token, searchQuery, onAddedToCart }
         </div>
       )}
 
-      {/* Add to cart */}
       <div className="card-footer">
-        <button className="btn btn-cart" onClick={handleAdd} disabled={adding}>
-          {added ? '✓ Added' : adding ? 'Adding…' : '+ Cart'}
-        </button>
+        {quantity > 0 ? (
+          <div className="qty-selector">
+            <button className="btn-qty" onClick={() => handleUpdate(-1)} disabled={updating}>-</button>
+            <span className="qty-value">{updating ? '…' : quantity}</span>
+            <button className="btn-qty" onClick={() => handleUpdate(1)} disabled={updating}>+</button>
+          </div>
+        ) : (
+          <button className="btn btn-cart" onClick={() => handleUpdate(1)} disabled={updating}>
+            {updating ? 'Adding…' : '+ Cart'}
+          </button>
+        )}
       </div>
     </div>
   );
 }
 
 // ── Cart Panel ───────────────────────────────────────────────────────────────
-function CartPanel({ token, refreshTrigger, pincode }) {
-  const [cart, setCart]           = useState([]);
+function CartPanel({ token, cart, refreshCart, pincode }) {
   const [comparison, setComparison] = useState(null);
   const [comparing, setComparing]   = useState(false);
   const [clearing, setClearing]     = useState(false);
+  const [updatingId, setUpdatingId] = useState(null);
 
-  const loadCart = useCallback(async () => {
+  const handleUpdate = async (searchQuery, delta, id) => {
+    setUpdatingId(id);
     try {
-      const data = await getCart(token);
-      setCart(data.cart || []);
-    } catch (e) { console.error(e); }
-  }, [token]);
-
-  useEffect(() => { loadCart(); }, [loadCart, refreshTrigger]);
-
-  const handleRemove = async (id) => {
-    try {
-      await removeFromCart(id, token);
-      setCart(prev => prev.filter(i => i.id !== id));
-      setComparison(null);
-    } catch (e) { console.error(e); }
+      await addToCart(searchQuery, delta, token);
+      await refreshCart();
+      if (delta < 0 && cart.find(c => c.id === id)?.quantity <= 1) {
+        setComparison(null);
+      }
+    } catch (e) { console.error(e); } finally { setUpdatingId(null); }
   };
 
   const handleClear = async () => {
     setClearing(true);
     try {
       await clearCart(token);
-      setCart([]);
+      await refreshCart();
       setComparison(null);
     } catch (e) { console.error(e); } finally { setClearing(false); }
   };
@@ -184,9 +182,27 @@ function CartPanel({ token, refreshTrigger, pincode }) {
         )}
         {cart.map(item => (
           <div className="cart-item" key={item.id}>
-            <span className="cart-item-name">{cap(item.search_query)}</span>
-            <span className="cart-item-qty">×{item.quantity}</span>
-            <button className="btn-remove" onClick={() => handleRemove(item.id)}>✕</button>
+            <div className="cart-item-details">
+              <span className="cart-item-name">{cap(item.search_query)}</span>
+              {item.product_name && (
+                <span className="cart-item-variant">
+                  {item.product_name} <span className="cart-item-plat">({cap(item.preferred_platform) || 'Any'})</span>
+                </span>
+              )}
+            </div>
+            <div className="cart-qty-selector">
+              <button 
+                onClick={() => handleUpdate(item.search_query, -1, item.id)} 
+                disabled={updatingId === item.id}
+                className="btn-qty-small"
+              >-</button>
+              <span className="qty-value">{updatingId === item.id ? '…' : item.quantity}</span>
+              <button 
+                onClick={() => handleUpdate(item.search_query, 1, item.id)} 
+                disabled={updatingId === item.id}
+                className="btn-qty-small"
+              >+</button>
+            </div>
           </div>
         ))}
 
@@ -209,7 +225,10 @@ function CartPanel({ token, refreshTrigger, pincode }) {
                     <div className="comp-item-row" key={j}>
                       <span className="comp-item-query">{cap(found.query)}</span>
                       <span className="comp-item-product">{found.product}</span>
-                      <span className="comp-item-price">₹{found.price}</span>
+                      <span className="comp-item-price">
+                        ₹{found.total_cost || found.price} 
+                        {found.quantity > 1 && <span className="comp-math"> (₹{found.price}×{found.quantity})</span>}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -273,7 +292,19 @@ export default function App() {
   const [results,     setResults]     = useState(null);
   const [loading,     setLoading]     = useState(false);
   const [error,       setError]       = useState(null);
-  const [cartTrigger, setCartTrigger] = useState(0);
+  
+  // Hoist cart state here
+  const [cart, setCart] = useState([]);
+  
+  const loadCart = useCallback(async () => {
+    if (!token) return;
+    try {
+      const data = await getCart(token);
+      setCart(data.cart || []);
+    } catch (e) { console.error(e); }
+  }, [token]);
+
+  useEffect(() => { loadCart(); }, [loadCart]);
 
   useEffect(() => {
     if (token) syncMe(token).catch(console.error);
@@ -281,21 +312,35 @@ export default function App() {
 
   if (auth.isLoading) {
     return (
-      <div className="auth-screen">
-        <div className="spinner" />
-        <p style={{ color: 'var(--muted)' }}>Connecting to Keycloak…</p>
+      <div className="app auth-layout">
+        <div className="auth-card">
+          <div className="spinner" style={{ width: '64px', height: '64px', borderWidth: '5px' }} />
+          <p style={{ color: 'var(--text-main)', fontSize: '1.2rem', marginTop: '1rem' }}>Connecting to Keycloak…</p>
+        </div>
       </div>
     );
   }
 
   if (!auth.isAuthenticated) {
     return (
-      <div className="auth-screen">
-        <h1>🛒 Bot<span>-Mart</span></h1>
-        <p>Compare prices across Blinkit, Zepto &amp; Instamart. Log in to get started.</p>
-        <button className="btn-login" onClick={() => auth.signinRedirect()}>
-          Log in with Keycloak
-        </button>
+      <div className="app auth-layout">
+        <div className="auth-card">
+          <h1>
+            <span className="auth-cart-icon">🛒</span>
+            <span className="text-gradient">Bot<span>-Mart</span></span>
+          </h1>
+          <p>Compare prices across Blinkit, Zepto &amp; Instamart.<br />Log in to get started.</p>
+          
+          <div className="auth-platforms">
+            <img src="/blinkit.png" alt="Blinkit" className="store-logo" title="Blinkit" />
+            <img src="/zepto.png" alt="Zepto" className="store-logo" title="Zepto" />
+            <img src="/instamart.png" alt="Instamart" className="store-logo" title="Instamart" />
+          </div>
+
+          <button className="btn-login" onClick={() => auth.signinRedirect()}>
+            Log in with Keycloak
+          </button>
+        </div>
       </div>
     );
   }
@@ -323,7 +368,7 @@ export default function App() {
     <div className="app">
       {/* HEADER */}
       <header className="header">
-        <div className="logo">🛒 Bot<span>-Mart</span></div>
+        <div className="logo">🛒 <span className="text-gradient">Bot<span>-Mart</span></span></div>
         <div className="header-right">
           <span className="username">👤 {auth.user?.profile?.preferred_username}</span>
           <button className="btn btn-logout" onClick={() => auth.signoutRedirect()}>Log Out</button>
@@ -424,7 +469,8 @@ export default function App() {
                       isCheapestTotal={item.store === cheapestTotalStore && item.status === 'success'}
                       token={token}
                       searchQuery={query}
-                      onAddedToCart={() => setCartTrigger(t => t + 1)}
+                      cart={cart}
+                      refreshCart={loadCart}
                     />
                   ))}
                 </div>
@@ -434,7 +480,7 @@ export default function App() {
         </div>
 
         {/* RIGHT: CART */}
-        <CartPanel token={token} refreshTrigger={cartTrigger} pincode={pincode} />
+        <CartPanel token={token} cart={cart} refreshCart={loadCart} pincode={pincode} />
       </div>
     </div>
   );
