@@ -12,6 +12,9 @@ from app.scraper.blinkit import BlinkitScraper
 from app.scraper.zepto import ZeptoScraper
 from app.scraper.instamart import InstamartScraper
 
+# AI Matching
+from app.ai.matcher import match_products
+
 # Database & Auth Imports
 from app.database import engine, get_db
 from app.models import Base, User, PriceSnapshot, PlatformName
@@ -106,6 +109,26 @@ async def compare(
     results = await asyncio.gather(*tasks)
     print(f"[compare] All scrapers done: {[r.get('store') if r else 'None' for r in results]}")
 
+    # ── AI Step: verify product matching & compute total prices ──────────────
+    valid_for_ai = [r for r in results if r and r.get("status") == "success"]
+    ai_analysis  = await match_products(item, valid_for_ai)
+
+    # Build a lookup from store → AI result so we can enrich each scraper result
+    ai_by_store = {x["store"]: x for x in ai_analysis.get("results", [])}
+    for r in results:
+        if r is None:
+            continue
+        store_ai = ai_by_store.get(r.get("store"), {})
+        r["ai_match"]           = store_ai.get("is_match", True)
+        r["ai_mismatch_reason"] = store_ai.get("mismatch_reason")
+        r["total_price"]        = store_ai.get("total_price",
+                                       r.get("price", 0)
+                                       + r.get("delivery_fee", 0)
+                                       + r.get("handling_fee", 0)
+                                       + r.get("platform_fee", 0)
+                                       + r.get("gst_fee", 0))
+    # ─────────────────────────────────────────────────────────────────────────
+
     # Save successful results as PriceSnapshots so /cart/compare can read them
     PLATFORM_MAP = {
         "Blinkit": PlatformName.BLINKIT,
@@ -140,9 +163,10 @@ async def compare(
     db.commit()
     print("[compare] DB commit done.")
 
-    # Filter and find cheapest
+    # Filter and find cheapest by TOTAL price (item + all fees)
     valid_results = [r for r in results if r is not None and r.get("status") == "success"]
-    cheapest = min(valid_results, key=lambda x: x["price"]) if valid_results else None
+    cheapest_item  = min(valid_results, key=lambda x: x["price"])       if valid_results else None
+    cheapest_total = min(valid_results, key=lambda x: x["total_price"]) if valid_results else None
 
     processed_results = [
         r if r is not None else {"store": "Unknown", "status": "failed", "error": "Scraper returned None"}
@@ -151,9 +175,19 @@ async def compare(
 
     print("[compare] Returning response.")
     return {
-        "user": current_user["email"],
-        "query": item,
-        "pincode": pincode,
-        "cheapest_option": cheapest,
-        "all_results": processed_results
+        "user":             current_user["email"],
+        "query":            item,
+        "pincode":          pincode,
+        # AI enrichment
+        "canonical_name":   ai_analysis.get("canonical_name", item.title()),
+        "comparison_valid": ai_analysis.get("comparison_valid", True),
+        "ai_note":          ai_analysis.get("ai_note"),
+        "ai_confidence":    ai_analysis.get("confidence", "low"),
+        # Cheapest by item price (legacy) + cheapest by total (new)
+        "cheapest_option":  cheapest_item,
+        "cheapest_total":   {
+            "store":       ai_analysis.get("cheapest_valid_store"),
+            "total_price": ai_analysis.get("cheapest_total_price"),
+        },
+        "all_results":      processed_results,
     }

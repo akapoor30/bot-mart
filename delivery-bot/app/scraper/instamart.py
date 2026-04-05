@@ -235,7 +235,20 @@ class InstamartScraper(BaseScraper):
                                 await matched_btn.click()
                                 await page.wait_for_timeout(3000)
                                 await page.goto("https://www.swiggy.com/instamart/cart", wait_until="domcontentloaded", timeout=20000)
-                                await page.wait_for_timeout(4000)
+                                # Wait until Swiggy's pricing API has populated the bill section
+                                # (bill renders async AFTER domcontentloaded — fixed 4s is not reliable)
+                                try:
+                                    await page.wait_for_function(
+                                        """() => {
+                                            const t = document.body.innerText || '';
+                                            return t.includes('Bill Details') || t.includes('BILL DETAILS')
+                                                   || t.includes('To Pay') || t.includes('Handling Fee');
+                                        }""",
+                                        timeout=10000
+                                    )
+                                except Exception:
+                                    await page.wait_for_timeout(3000)  # hard fallback
+                                await page.wait_for_timeout(1500)  # extra buffer for React render
                                 # JS: find the BILL DETAILS section — pick the SMALLEST container
                                 # that has the fee keywords. Avoids the < 2000 char limit that
                                 # always rejected Instamart's large React wrappers.
@@ -264,6 +277,7 @@ class InstamartScraper(BaseScraper):
                                     return document.body.innerText || "";
                                 }''')
                                 if bill_text:
+                                    print(f"Instamart bill_text (fallback, first 400): {bill_text[:400]}")
                                     fees = parse_fees_from_text(bill_text)
                                     print(f"Instamart fees scraped (fallback): {fees}")
                                 else:
@@ -351,7 +365,20 @@ class InstamartScraper(BaseScraper):
                                 await add_btn.first.click()
                                 await page.wait_for_timeout(3000)
                                 await page.goto("https://www.swiggy.com/instamart/cart", wait_until="domcontentloaded", timeout=20000)
-                                await page.wait_for_timeout(4000)
+                                # Wait until Swiggy's pricing API has populated the bill section
+                                # (bill renders async AFTER domcontentloaded — fixed 4s is not reliable)
+                                try:
+                                    await page.wait_for_function(
+                                        """() => {
+                                            const t = document.body.innerText || '';
+                                            return t.includes('Bill Details') || t.includes('BILL DETAILS')
+                                                   || t.includes('To Pay') || t.includes('Handling Fee');
+                                        }""",
+                                        timeout=10000
+                                    )
+                                except Exception:
+                                    await page.wait_for_timeout(3000)  # hard fallback
+                                await page.wait_for_timeout(1500)  # extra buffer for React render
                                 # JS: find the BILL DETAILS section — pick the SMALLEST container
                                 bill_text = await page.evaluate('''() => {
                                     const all = Array.from(document.querySelectorAll("div, section"));
@@ -378,6 +405,7 @@ class InstamartScraper(BaseScraper):
                                     return document.body.innerText || "";
                                 }''')
                                 if bill_text:
+                                    print(f"Instamart bill_text (main, first 400): {bill_text[:400]}")
                                     fees = parse_fees_from_text(bill_text)
                                     print(f"Instamart fees scraped: {fees}")
                                 else:
